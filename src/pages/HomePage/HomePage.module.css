@@ -1,0 +1,54 @@
+.homePage {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.home {
+  border-radius: 30px;
+  width: 720px;
+  height: 530px;
+  background: var(--background-gray);
+  padding: 96px 64px;
+}
+
+.homeTitle {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.homeLanguage {
+  background: var(--yellow-light-cream);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.homeDescription {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  letter-spacing: -0.02em;
+  margin-bottom: 64px;
+}
+
+.homeBtn {
+  border-radius: 12px;
+  padding: 16px 88px;
+  width: 267px;
+  height: 60px;
+  background: #f4c550;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+}
+
+.homeImg {
+  /* border-radius: 30px; */
+  width: 568px;
+  height: 530px;
+}
