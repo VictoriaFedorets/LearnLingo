@@ -1,7 +1,4 @@
 :root {
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400; */
   --background: #fff;
   --main-text: #121417;
   --gray-text: #8a8a89;
@@ -17,9 +14,11 @@
   --rose-peach-puff: #f4c8ba;
 
   --background-gray: #f8f8f8;
+  --gray-shadow: rgba(18, 20, 23, 0.7);
   /* --rose-light-blush: #f2c0bd;
   --rose-light-blush: #f2c0bd;
   --background: rgba(0, 0, 0, 0.2); */
+  text-align: left;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -48,6 +47,7 @@ p {
 }
 
 button {
+  background: none;
   border: none;
   display: block;
   cursor: pointer;

@@ -1,0 +1,65 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 128px;
+}
+
+.headerLogo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+}
+
+.headerNav {
+  font-size: 16px;
+  line-height: 125%;
+}
+
+.headerNav .link:first-child {
+  margin-right: 28px;
+}
+
+.headerAuthorization {
+  display: flex;
+  gap: 16px;
+}
+
+.headerLogIn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #121417;
+}
+
+.iconLogIn {
+  fill: none;
+  width: 20px;
+  height: 20px;
+  stroke-width: 2px;
+  stroke: #f4c550;
+}
+
+.headerRegistration {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+  background: #121417;
+}
+
+.iconLogo {
+  width: 28px;
+  height: 28px;
+}
