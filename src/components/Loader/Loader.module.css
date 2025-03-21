@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--backdrop-color-loader);
+  background-color: var(--backdrop);
   display: flex;
   justify-content: center;
   align-items: center;

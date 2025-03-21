@@ -7,6 +7,7 @@ import {
   selectIsLoading,
   selectAuthError,
 } from "../../redux/auth/selectors.js";
+import css from "./RegisterForm.module.css";
 
 const schema = yup.object().shape({
   name: yup.string().required("Required field"),
@@ -34,23 +35,42 @@ export default function RegisterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Registration</h1>
+    <form className={css.registerForm} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={css.registerTitle}>Registration</h1>
+      <p className={css.registerDescription}>
+        Thank you for your interest in our platform! In order to register, we
+        need some information. Please provide us with the following information
+      </p>
 
-      <input type="name" placeholder="Name" {...register("password")} />
-      <p>{errors.name?.message}</p>
+      <input
+        className={css.registerInput}
+        type="name"
+        placeholder="Name"
+        {...register("password")}
+      />
+      <p className={css.registerError}>{errors.name?.message}</p>
 
-      <input type="email" placeholder="Email" {...register("email")} />
-      <p>{errors.email?.message}</p>
+      <input
+        className={css.registerInput}
+        type="email"
+        placeholder="Email"
+        {...register("email")}
+      />
+      <p className={css.registerError}>{errors.email?.message}</p>
 
-      <input type="password" placeholder="Password" {...register("password")} />
-      <p>{errors.password?.message}</p>
+      <input
+        className={css.registerInput}
+        type="password"
+        placeholder="Password"
+        {...register("password")}
+      />
+      <p className={css.registerError}>{errors.password?.message}</p>
 
-      <button type="submit" disabled={isLoading}>
+      <button className={css.registerBtn} type="submit" disabled={isLoading}>
         Sign Up
       </button>
 
-      {error && <p>{error}</p>}
+      {error && <p className={css.registerError}>{error}</p>}
     </form>
   );
 }
