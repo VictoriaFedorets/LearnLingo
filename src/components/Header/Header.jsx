@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { useState } from "react";
-import LogInForm from "../LogInForm/LogInForm.jsx";
+import AuthModal from "../AuthModal/AuthModal.jsx";
 import css from "./Header.module.css";
 
 export default function Header() {
@@ -59,7 +59,7 @@ export default function Header() {
       </header>
 
       {authModal.isOpen && (
-        <LogInForm
+        <AuthModal
           isLogin={authModal.isLogin}
           onClose={() => setAuthModal({ ...authModal, isOpen: false })}
         />

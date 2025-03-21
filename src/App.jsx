@@ -16,24 +16,22 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 export default function App() {
   return (
     // <SharedLayout>
-    <Router>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="/teachers" element={<TeachersPage />} /> */}
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/teachers" element={<TeachersPage />} /> */}
 
-          {/* <Route path="/catalog" element={<CatalogPage />} />
+        {/* <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/favourites" element={<FavouritesPage />} />
           <Route path="/catalog/:id" element={<DetailsPage />}>
             <Route index element={<Navigate to="features" />} />
             <Route path="features" element={<Features />} />
             <Route path="reviews" element={<Reviews />} />
           </Route> */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <ScrollToTop />
-      </Suspense>
-    </Router>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+      <ScrollToTop />
+    </Suspense>
     // </SharedLayout>
   );
 }
