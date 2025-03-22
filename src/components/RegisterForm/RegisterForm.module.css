@@ -49,3 +49,20 @@
   padding: 0 16px;
   margin-bottom: 10px;
 }
+
+.inputEmail {
+  position: relative;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 17px;
+  right: 18px;
+  cursor: pointer;
+  fill: none;
+  stroke: var(--main-text);
+  stroke-width: 2px;
+  transition: opacity 0.3s ease;
+}

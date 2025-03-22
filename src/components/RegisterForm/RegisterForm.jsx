@@ -8,6 +8,7 @@ import {
   selectAuthError,
 } from "../../redux/auth/selectors.js";
 import css from "./RegisterForm.module.css";
+import { useState } from "react";
 
 const schema = yup.object().shape({
   name: yup.string().required("Required field"),
@@ -22,6 +23,7 @@ export default function RegisterForm() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectAuthError);
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -32,6 +34,10 @@ export default function RegisterForm() {
 
   const onSubmit = (data) => {
     dispatch(registerUser(data));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -58,12 +64,27 @@ export default function RegisterForm() {
       />
       <p className={css.registerError}>{errors.email?.message}</p>
 
-      <input
-        className={css.registerInput}
-        type="password"
-        placeholder="Password"
-        {...register("password")}
-      />
+      <div className={css.inputEmail}>
+        <input
+          className={css.registerInput}
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          {...register("password")}
+        />
+        <svg
+          className={css.icon}
+          onClick={(e) => {
+            e.preventDefault();
+            togglePasswordVisibility();
+          }}
+        >
+          <use
+            href={`./assets/icons/symbol-defs.svg#${
+              showPassword ? "icon-eye-on" : "icon-eye-off"
+            }`}
+          />
+        </svg>
+      </div>
       <p className={css.registerError}>{errors.password?.message}</p>
 
       <button className={css.registerBtn} type="submit" disabled={isLoading}>

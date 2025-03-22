@@ -25,10 +25,8 @@ export default function LoginForm() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (values, actions) => {
-    if (values.email === "" || values.password === "") return;
-    dispatch(loginUser(values));
-    actions.resetForm();
+  const onSubmit = (data) => {
+    dispatch(loginUser(data));
   };
 
   const togglePasswordVisibility = () => {
@@ -36,48 +34,48 @@ export default function LoginForm() {
   };
 
   return (
-    <form className={css.registerForm} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={css.registerTitle}>Log In</h1>
-      <p className={css.registerDescription}>
+    <form className={css.loginForm} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={css.loginTitle}>Log In</h1>
+      <p className={css.loginDescription}>
         Welcome back! Please enter your credentials to access your account and
         continue your search for an teacher.
       </p>
 
       <input
-        className={css.registerInput}
+        className={css.loginInput}
         type="email"
         placeholder="Email"
         {...register("email")}
       />
-      <p className={css.registerError}>{errors.email?.message}</p>
+      <p className={css.loginError}>{errors.email?.message}</p>
 
-      <input
-        className={css.registerInput}
-        type="password"
-        placeholder="Password"
-        {...register("password")}
-      />
-      <svg
-        className={css.icon}
-        width={16}
-        height={16}
-        onClick={(e) => {
-          e.preventDefault();
-          togglePasswordVisibility();
-        }}
-      >
-        <use
-          href={`./assets/icons/symbol-defs.svg#${
-            showPassword ? "icon-eye" : "icon-eye-hidden"
-          }`}
+      <div className={css.inputEmail}>
+        <input
+          className={css.loginInput}
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          {...register("password")}
         />
-      </svg>
-      <p className={css.registerError}>{errors.password?.message}</p>
+        <svg
+          className={css.icon}
+          onClick={(e) => {
+            e.preventDefault();
+            togglePasswordVisibility();
+          }}
+        >
+          <use
+            href={`./assets/icons/symbol-defs.svg#${
+              showPassword ? "icon-eye-on" : "icon-eye-off"
+            }`}
+          />
+        </svg>
+      </div>
+      <p className={css.loginError}>{errors.password?.message}</p>
 
-      <button className={css.registerBtn} type="submit" disabled={isLoading}>
+      <button className={css.loginBtn} type="submit" disabled={isLoading}>
         Log In
       </button>
-      {error && <p className={css.registerError}>{error}</p>}
+      {error && <p className={css.loginError}>{error}</p>}
     </form>
   );
 }

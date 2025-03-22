@@ -28,7 +28,7 @@ export default function AuthModal({ isLogin, onClose }) {
       <div className={css.modal}>
         <button className={css.closeButton} onClick={onClose}>
           <svg className={css.iconClose}>
-            <use href="public/assets/icons/symbol-defs.svg#icon-x"></use>
+            <use href="/assets/icons/symbol-defs.svg#icon-x"></use>
           </svg>
         </button>
         {isLogin ? <LogInForm /> : <RegisterForm />}
