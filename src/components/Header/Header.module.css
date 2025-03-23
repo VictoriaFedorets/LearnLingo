@@ -1,8 +1,10 @@
 .header {
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 128px;
+  padding: 20px 128px 0 128px;
 }
 
 .headerLogo {

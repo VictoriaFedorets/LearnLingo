@@ -21,7 +21,8 @@
   /* --rose-light-blush: #f2c0bd;
   --rose-light-blush: #f2c0bd;
   --background: rgba(0, 0, 0, 0.2); */
-  text-align: left;
+  
+  text-align: center;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -29,6 +30,7 @@
 }
 
 body {
+  margin: 0 auto;
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
   font-weight: 400;

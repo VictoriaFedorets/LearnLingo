@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/slice.js";
+import teacherReducer from "./teachers/slise.js";
 // import filtersReducer from "./filtersSlice.js";
 // import favouritesReducer from "./favourites/slice.js";
 
@@ -23,6 +24,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  teacher: teacherReducer,
   //   filters: filtersReducer,
   // favourites: favouritesReducer,
 });

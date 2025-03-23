@@ -64,5 +64,6 @@
   fill: none;
   stroke: var(--main-text);
   stroke-width: 2px;
+  /* transform: translateY(-50%); */
   transition: opacity 0.3s ease;
 }

@@ -1,10 +1,13 @@
 .hero {
+  max-width: 1440px;
   margin: 0 auto;
 }
 
 .homePageHero {
   display: flex;
+  justify-content: center;
   gap: 24px;
+  margin-top: 20px;
   margin-bottom: 24px;
 }
 

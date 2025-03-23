@@ -6,12 +6,16 @@ import {
   Routes,
 } from "react-router-dom";
 import Loader from "./components/Loader/Loader.jsx";
-// import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import "./App.css";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
-// const CatalogPage = lazy(() => import("./pages/TeachersPage/TeachersPage.jsx"));
+const TeachersPage = lazy(() =>
+  import("./pages/TeachersPage/TeachersPage.jsx")
+);
+// const FavouritesPage = lazy(() =>
+//   import("./pages/FavouritesPage/FavouritesPage.jsx")
+// );
 
 export default function App() {
   return (
@@ -19,8 +23,9 @@ export default function App() {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/teachers" element={<TeachersPage />} /> */}
+        <Route path="/teachers" element={<TeachersPage />} />
 
+        {/* <Route path="/favourites" element={<FavouritesPage />} /> */}
         {/* <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/favourites" element={<FavouritesPage />} />
           <Route path="/catalog/:id" element={<DetailsPage />}>

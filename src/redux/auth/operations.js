@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import toast from "react-hot-toast";
 
 // Реєстрація користувача
 export const registerUser = createAsyncThunk(
@@ -18,6 +19,7 @@ export const registerUser = createAsyncThunk(
       );
       return { uid: userCredential.user.uid, email: userCredential.user.email };
     } catch (error) {
+      toast.error(error);
       return rejectWithValue(error.message);
     }
   }
@@ -35,6 +37,7 @@ export const loginUser = createAsyncThunk(
       );
       return { uid: userCredential.user.uid, email: userCredential.user.email };
     } catch (error) {
+      toast.error("Something went wrong");
       return rejectWithValue(error.message);
     }
   }

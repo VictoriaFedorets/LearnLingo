@@ -50,9 +50,9 @@ export default function RegisterForm() {
 
       <input
         className={css.registerInput}
-        type="name"
+        type="text"
         placeholder="Name"
-        {...register("password")}
+        {...register("name")}
       />
       <p className={css.registerError}>{errors.name?.message}</p>
 

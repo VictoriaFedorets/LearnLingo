@@ -1,0 +1,185 @@
+.teachersList {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teachersItem {
+  background: var(--background);
+  border-radius: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 1184px;
+  /* height: 328px; */
+  margin-bottom: 32px;
+  display: flex;
+  gap: 48px;
+}
+
+.avatarBlock {
+  position: relative;
+}
+
+.teacherAvatar {
+  border-radius: 100px;
+  width: 108px;
+  /* height: 108px; */
+  border: 3px solid #fbe9ba;
+  padding: 12px;
+  position: relative;
+}
+
+.iconPoint {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 19px;
+  right: 23px;
+}
+
+.teacherHeader {
+  width: 100%;
+}
+
+.teacherLessons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.teacherLessons h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+  margin-right: 30px;
+}
+
+.lessonsList {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.lessonsList li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 16px;
+}
+
+.lessonsList li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 16px;
+  background: rgba(18, 20, 23, 0.2);
+}
+
+.iconBook {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--main-text);
+  margin-right: 16px;
+}
+
+.iconStar {
+  width: 16px;
+  height: 16px;
+  margin-right: 16px;
+}
+
+.price {
+  /* margin-left: 4px; */
+  color: #38cd3e;
+}
+
+.iconHeart {
+  width: 26px;
+  height: 22px;
+  fill: none;
+  stroke-width: 2px;
+  stroke: #121417;
+  margin-left: 66px;
+}
+
+.teacherInfo {
+  margin: 32px 0 16px 0;
+}
+
+.teacherInfo h3 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  margin-bottom: 32px;
+}
+
+.teacherInfo p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.teacherInfo p:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.teacherInfo p:first-of-type span {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--main-text);
+}
+
+.teacherInfo span {
+  color: var(--main-text);
+}
+
+.btnReadMore {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  margin-bottom: 32px;
+}
+
+.teachersListBtn {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  background: var(--yellow-maize);
+  border-radius: 12px;
+  padding: 16px 48px;
+  width: 183px;
+  height: 60px;
+  text-align: center;
+  display: block;
+  margin-top: 64px auto 0 auto;
+}
+
+.levelBlock {
+  display: flex;
+  gap: 8px;
+}
+
+.levelItem {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 114%;
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
+  /* width: 124px;
+  height: 32px; */
+}
