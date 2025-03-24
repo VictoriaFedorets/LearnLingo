@@ -55,7 +55,7 @@
   font-size: 16px;
   line-height: 150%;
   color: #8a8a89;
-  margin-right: 30px;
+  padding-right: 30px;
 }
 
 .lessonsList {
@@ -65,6 +65,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
+  margin-left: auto;
 }
 
 .lessonsList li {
@@ -163,9 +164,8 @@
   padding: 16px 48px;
   width: 183px;
   height: 60px;
-  text-align: center;
   display: block;
-  margin-top: 64px auto 0 auto;
+  margin: 64px auto 96px auto;
 }
 
 .levelBlock {
@@ -182,4 +182,44 @@
   padding: 8px 12px;
   /* width: 124px;
   height: 32px; */
+}
+
+.levelBlock li:first-child {
+  background: #f4c550;
+  border: none;
+}
+
+.reviewerNameLetter {
+  border-radius: 50%;
+  border: 3px solid #f4c550;
+  width: 44px;
+  height: 44px;
+  background: #fbe9ba;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: middle;
+  margin-right: 12px;
+}
+
+.reviewerItem {
+  margin-bottom: 32px;
+}
+
+.reviewerInfo {
+  display: flex;
+}
+
+.reviewerItem p {
+  margin-bottom: 32px;
+}
+
+.reviewers {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.reviewers p {
+  font-size: 16px;
+  margin-bottom: 32px;
 }
