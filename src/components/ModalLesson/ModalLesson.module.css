@@ -1,0 +1,93 @@
+.modalTitle {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.modalDescription {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--gray-modal);
+  margin-bottom: 20px;
+}
+
+.modalTeacher {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.teacherAvatar {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+}
+
+.youTeacher {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.modalTeacherName {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--gray-text);
+  margin-top: 4px;
+}
+
+.modalTitle2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 133%;
+  margin-bottom: 20px;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.radioGroup label input {
+  margin-right: 8px;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+  background: var(--yellow-maize);
+}
+
+.btnBook {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  border-radius: 12px;
+  padding: 16px auto;
+  width: 100%;
+  height: 60px;
+  background: var(--yellow-maize);
+  margin-top: 40px;
+}
+
+.input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 137%;
+}
+
+.input::placeholder {
+  color: #121417;
+}
+
+.input:not(:last-of-type) {
+  margin-bottom: 18px;
+}

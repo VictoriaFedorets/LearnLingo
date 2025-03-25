@@ -97,7 +97,7 @@
 .iconStar {
   width: 16px;
   height: 16px;
-  margin-right: 16px;
+  margin-right: 8px;
 }
 
 .price {
@@ -115,7 +115,7 @@
 }
 
 .teacherInfo {
-  margin: 32px 0 16px 0;
+  margin: 32px 0;
 }
 
 .teacherInfo h3 {
@@ -152,7 +152,7 @@
   line-height: 150%;
   text-decoration: underline;
   text-decoration-skip-ink: none;
-  margin-bottom: 32px;
+  margin-top: 32px;
 }
 
 .teachersListBtn {
@@ -210,16 +210,45 @@
   display: flex;
 }
 
-.reviewerItem p {
-  margin-bottom: 32px;
-}
-
 .reviewers {
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
 }
 
-.reviewers p {
+.reviewersExperience {
   font-size: 16px;
   margin-bottom: 32px;
+}
+
+.reviewerName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+  margin-bottom: 2px;
+}
+
+.reviewerRating {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  margin-bottom: 16px;
+}
+
+.reviewerComment {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.btnBookLesson {
+  border-radius: 12px;
+  padding: 16px 48px;
+  width: 232px;
+  height: 60px;
+  background: #f4c550;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  margin-top: 32px;
 }

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import css from "./AuthModal.module.css";
+import css from "./BaseModal.module.css";
 import LogInForm from "../LogInForm/LogInForm.jsx";
 import RegisterForm from "../RegisterForm/RegisterForm.jsx";
 
-export default function AuthModal({ isLogin, onClose }) {
+export default function BaseModal({ isLogin, onClose, children }) {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
@@ -31,7 +31,7 @@ export default function AuthModal({ isLogin, onClose }) {
             <use href="/assets/icons/symbol-defs.svg#icon-x"></use>
           </svg>
         </button>
-        {isLogin ? <LogInForm /> : <RegisterForm />}
+        {children ? children : isLogin ? <LogInForm /> : <RegisterForm />}
       </div>
     </div>
   );

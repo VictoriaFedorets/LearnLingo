@@ -11,7 +11,10 @@ import css from "./RegisterForm.module.css";
 import { useState } from "react";
 
 const schema = yup.object().shape({
-  name: yup.string().required("Required field"),
+  name: yup
+    .string()
+    .min(3, "Name must be at least 3 characters")
+    .required("Required field"),
   email: yup.string().email("Incorrect email").required("Required field"),
   password: yup
     .string()

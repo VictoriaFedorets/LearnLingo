@@ -1,16 +1,20 @@
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { useState } from "react";
-import AuthModal from "../AuthModal/AuthModal.jsx";
+import BaseModal from "../BaseModal/BaseModal.jsx";
 import css from "./Header.module.css";
 
 export default function Header() {
-  const [authModal, setAuthModal] = useState({ isOpen: false, isLogin: true });
+  const [baseModalState, setbaseModalState] = useState({
+    isOpen: false,
+    isLogin: true,
+  });
 
   const getNavLinkClass = ({ isActive }) =>
     clsx(css.link, isActive && css.active);
 
-  const openAuthModal = (isLogin) => setAuthModal({ isOpen: true, isLogin });
+  const openBaseModal = (isLogin) =>
+    setbaseModalState({ isOpen: true, isLogin });
 
   return (
     <>
@@ -39,7 +43,7 @@ export default function Header() {
         <div className={css.headerAuthorization}>
           <button
             className={css.headerLogIn}
-            onClick={() => openAuthModal(true)}
+            onClick={() => openBaseModal(true)}
           >
             <svg className={css.iconLogo}>
               <use
@@ -51,17 +55,19 @@ export default function Header() {
           </button>
           <button
             className={css.headerRegistration}
-            onClick={() => openAuthModal(false)}
+            onClick={() => openBaseModal(false)}
           >
             Registration
           </button>
         </div>
       </header>
 
-      {authModal.isOpen && (
-        <AuthModal
-          isLogin={authModal.isLogin}
-          onClose={() => setAuthModal({ ...authModal, isOpen: false })}
+      {baseModalState.isOpen && (
+        <BaseModal
+          isLogin={baseModalState.isLogin}
+          onClose={() =>
+            setbaseModalState({ ...baseModalState, isOpen: false })
+          }
         />
       )}
     </>

@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1001;
+  overflow-y: auto;
 }
 
 .modal {
@@ -35,5 +37,5 @@
   width: 20px;
   height: 20px;
   stroke-width: 2.5px;
-  stroke: #121417;
+  stroke: var(--main-text);
 }
