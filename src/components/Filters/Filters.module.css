@@ -1,1 +1,26 @@
-/* margin-bottom: 32px; */
+.filterForm {
+  display: flex;
+  gap: 20px;
+  padding-left: 64px;
+  margin-bottom: 32px;
+}
+
+.filterCategory {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #8a8a89;
+  margin-bottom: 8px;
+}
+
+.filterSelect {
+  border: none;
+  border-radius: 14px;
+  padding: 0 18px;
+  width: 221px;
+  height: 48px;
+  background: var(--background);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+}

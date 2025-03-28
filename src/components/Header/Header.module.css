@@ -1,10 +1,12 @@
 .header {
-  max-width: 1440px;
+  /* max-width: 1440px; */
+  max-width: 1184px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 128px 0 128px;
+  padding: 20px 0;
 }
 
 .headerLogo {
@@ -20,6 +22,7 @@
 .headerNav {
   font-size: 16px;
   line-height: 125%;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
 }
 
 .headerNav .link:first-child {
@@ -63,4 +66,10 @@
 .iconLogo {
   width: 28px;
   height: 28px;
+}
+
+.headerNav .active {
+  color: var(--yellow-maize);
+  font-weight: 700;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
