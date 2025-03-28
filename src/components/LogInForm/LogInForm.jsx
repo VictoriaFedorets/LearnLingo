@@ -45,6 +45,7 @@ export default function LoginForm() {
         className={css.loginInput}
         type="email"
         placeholder="Email"
+        autoComplete="email"
         {...register("email")}
       />
       <p className={css.loginError}>{errors.email?.message}</p>
@@ -54,6 +55,7 @@ export default function LoginForm() {
           className={css.loginInput}
           type={showPassword ? "text" : "password"}
           placeholder="Password"
+          autoComplete="password"
           {...register("password")}
         />
         <svg

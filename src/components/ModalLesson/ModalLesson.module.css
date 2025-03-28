@@ -21,7 +21,7 @@
 }
 
 .teacherAvatar {
-  border-radius: 100px;
+  border-radius: 50%;
   width: 44px;
   height: 44px;
 }
@@ -38,7 +38,7 @@
   font-size: 12px;
   line-height: 133%;
   color: var(--gray-text);
-  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .modalTitle2 {
@@ -53,14 +53,37 @@
   flex-direction: column;
   gap: 16px;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 
 .radioGroup label input {
+  vertical-align: middle;
   margin-right: 8px;
-  border-radius: 12px;
+  appearance: none;
   width: 24px;
   height: 24px;
+  border: 2px solid gray;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  background: white;
+  cursor: pointer;
+}
+
+.radioGroup label input:checked {
+  border-color: var(--yellow-maize);
+}
+
+.radioGroup label input:checked::before {
+  content: "";
+  width: 12px;
+  height: 12px;
   background: var(--yellow-maize);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .btnBook {
@@ -76,7 +99,7 @@
 }
 
 .input {
-  border: 1px solid rgba(18, 20, 23, 0.1);
+  border: 1px solid var(--border-input);
   border-radius: 12px;
   padding: 16px 18px;
   width: 100%;
@@ -85,9 +108,19 @@
 }
 
 .input::placeholder {
-  color: #121417;
+  color: var(--main-text);
 }
 
 .input:not(:last-of-type) {
   margin-bottom: 18px;
+}
+
+.error:not(:last-of-type) {
+  margin-top: -18px;
+  margin-bottom: 18px;
+}
+
+.error,
+.errorMessage {
+  color: var(--yellow-maize);
 }

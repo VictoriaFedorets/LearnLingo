@@ -27,6 +27,7 @@ export default function RegisterForm() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectAuthError);
   const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -55,24 +56,34 @@ export default function RegisterForm() {
         className={css.registerInput}
         type="text"
         placeholder="Name"
+        autoComplete="name"
         {...register("name")}
+        aria-describedby="name-error"
       />
-      <p className={css.registerError}>{errors.name?.message}</p>
+      <p className={css.registerError} id="name-error">
+        {errors.name?.message}
+      </p>
 
       <input
         className={css.registerInput}
         type="email"
         placeholder="Email"
+        autoComplete="email"
         {...register("email")}
+        aria-describedby="email-error"
       />
-      <p className={css.registerError}>{errors.email?.message}</p>
+      <p className={css.registerError} id="email-error">
+        {errors.email?.message}
+      </p>
 
       <div className={css.inputEmail}>
         <input
           className={css.registerInput}
           type={showPassword ? "text" : "password"}
           placeholder="Password"
+          autoComplete="password"
           {...register("password")}
+          aria-describedby="password-error"
         />
         <svg
           className={css.icon}
@@ -88,10 +99,12 @@ export default function RegisterForm() {
           />
         </svg>
       </div>
-      <p className={css.registerError}>{errors.password?.message}</p>
+      <p className={css.registerError} id="password-error">
+        {errors.password?.message}
+      </p>
 
       <button className={css.registerBtn} type="submit" disabled={isLoading}>
-        Sign Up
+        {isLoading ? "Registration..." : "Sign Up"}
       </button>
 
       {error && <p className={css.registerError}>{error}</p>}

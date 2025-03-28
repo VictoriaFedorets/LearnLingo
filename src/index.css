@@ -16,13 +16,13 @@
   --background-gray: #f8f8f8;
   --backdrop: rgba(0, 0, 0, 0.5);
   --gray-shadow: rgba(18, 20, 23, 0.7);
-  --gray-modal: rgba(18, 20, 23, 0.8)
-
+  --gray-modal: rgba(18, 20, 23, 0.8);
+  --border-input: rgba(18, 20, 23, 0.1);
   /* --rose-light-blush: #f2c0bd;
   --rose-light-blush: #f2c0bd;
   --background: rgba(0, 0, 0, 0.2); */
-  
-  text-align: center;
+
+  text-align: left;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

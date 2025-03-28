@@ -2,12 +2,11 @@ import BaseModal from "../BaseModal/BaseModal.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {
-  selectIsLoading,
-  selectAuthError,
-} from "../../redux/auth/selectors.js";
+// import {
+//   selectAuthError,
+// } from "../../redux/auth/selectors.js";
+// import { useSelector } from "react-redux";
 import css from "./ModalLesson.module.css";
-import { useSelector } from "react-redux";
 
 const schema = yup.object().shape({
   name: yup
@@ -15,15 +14,18 @@ const schema = yup.object().shape({
     .min(3, "Name must be at least 3 characters")
     .required("Required field"),
   email: yup.string().email("Incorrect email").required("Required field"),
-  phone: yup.number().min(12).required("Phone number is required"),
-  reason: yup.string().required("Please select a reason"), // Add validation for reason
+  phone: yup
+    .string()
+    .matches(/^\d{10,15}$/, "Invalid phone number")
+    .required("Phone number is required"),
+  reason: yup.string().required("Please select a reason"),
 });
 
 export default function ModalLesson({ teacher, onClose }) {
-  const error = useSelector(selectAuthError);
+  //   const error = useSelector(selectAuthError);
   const {
+    register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -41,15 +43,15 @@ export default function ModalLesson({ teacher, onClose }) {
         <div className={css.modalTeacher}>
           <img
             src={teacher.avatar_url}
-            alt={`${teacher.name} ${teacher.surname}`}
+            alt={`${teacher?.name || "Unknown"} ${teacher?.surname || ""}`}
             className={css.teacherAvatar}
           />
-          <p className={css.modalTeacherName}>
-            Your teacher
+          <div>
+            <p className={css.modalTeacherName}>Your teacher</p>
             <h3 className={css.youTeacher}>
               {teacher.name} {teacher.surname}
             </h3>
-          </p>
+          </div>
         </div>
 
         <h2 className={css.modalTitle2}>
@@ -63,7 +65,7 @@ export default function ModalLesson({ teacher, onClose }) {
                 type="radio"
                 name="reason"
                 value="career"
-                {...control.register("reason")}
+                {...register("reason")}
               />
               Career and business
             </label>
@@ -73,7 +75,7 @@ export default function ModalLesson({ teacher, onClose }) {
                 type="radio"
                 name="reason"
                 value="lesson"
-                {...control.register("reason")}
+                {...register("reason")}
               />
               Lesson for kids
             </label>
@@ -83,7 +85,7 @@ export default function ModalLesson({ teacher, onClose }) {
                 type="radio"
                 name="reason"
                 value="livingAbroad"
-                {...control.register("reason")}
+                {...register("reason")}
               />
               Living abroad
             </label>
@@ -93,7 +95,7 @@ export default function ModalLesson({ teacher, onClose }) {
                 type="radio"
                 name="reason"
                 value="exams"
-                {...control.register("reason")}
+                {...register("reason")}
               />
               Exams and coursework
             </label>
@@ -103,41 +105,48 @@ export default function ModalLesson({ teacher, onClose }) {
                 type="radio"
                 name="reason"
                 value="culture"
-                {...control.register("reason")}
+                {...register("reason")}
               />
               Culture, travel or hobby
             </label>
+            {errors.reason && (
+              <p className={css.errorMessage}>{errors.reason.message}</p>
+            )}
           </div>
-
-          {errors.reason && (
-            <p className={css.errorMessage}>{errors.reason.message}</p>
-          )}
 
           <div>
             <input
               type="text"
-              name="name"
               placeholder="Full Name"
               autoComplete="name"
               className={css.input}
+              {...register("name")}
             ></input>
-            {errors.name && <p className={css.error}>{errors.name}</p>}
+            {errors.name && <p className={css.error}>{errors.name.message}</p>}
+
             <input
               type="email"
               name="email"
               placeholder="Email"
               autoComplete="email"
               className={css.input}
+              {...register("email")}
             ></input>
-            {errors.email && <p className={css.error}>{errors.email}</p>}
+            {errors.email && (
+              <p className={css.error}>{errors.email.message}</p>
+            )}
+
             <input
               type="tel"
               name="phone"
               placeholder="Phone number"
-              autoComplete="email"
+              autoComplete="tel"
               className={css.input}
+              {...register("phone")}
             ></input>
-            {errors.phone && <p className={css.error}>{errors.phone}</p>}
+            {errors.phone && (
+              <p className={css.error}>{errors.phone.message}</p>
+            )}
           </div>
 
           <button type="submit" className={css.btnBook}>
