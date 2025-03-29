@@ -39,7 +39,7 @@ export default function Filters({ onFilterChange }) {
       <label>
         <p className={css.filterCategory}>Languages</p>
         <select className={css.filterSelect} {...register("language")}>
-          <option value="">Select Language</option>
+          <option value="">Select language</option>
           <option value="french">French</option>
           <option value="english">English</option>
           <option value="spanish">Spanish</option>
@@ -52,7 +52,7 @@ export default function Filters({ onFilterChange }) {
       <label>
         <p className={css.filterCategory}>Level of knowledge</p>
         <select className={css.filterSelect} {...register("level")}>
-          <option value="">Select Level</option>
+          <option value="">Select level</option>
           <option value="beginner">A1 Beginner</option>
           <option value="elementary">A2 Elementary</option>
           <option value="intermediate">B1 Intermediate</option>
@@ -66,7 +66,7 @@ export default function Filters({ onFilterChange }) {
       <label>
         <p className={css.filterCategory}>Price</p>
         <select className={css.filterSelect} {...register("price")}>
-          <option value="">Select Price</option>
+          <option value="">Select price</option>
           <option value="10">10 $</option>
           <option value="20">20 $</option>
           <option value="30">30 $</option>

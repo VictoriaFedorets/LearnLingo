@@ -39,7 +39,7 @@
   font-size: 18px;
 }
 
-.headerNav .link:first-child {
+.headerNav .link:not(:last-child) {
   margin-right: 28px;
 }
 

@@ -54,3 +54,19 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
+
+// Оновлення стану користувача при перезавантаженні сторінки
+export const refreshUser = createAsyncThunk(
+  "auth/refreshUser",
+  async (_, { rejectWithValue }) => {
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        return { uid: user.uid, email: user.email };
+      }
+      return rejectWithValue("No user is currently signed in");
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

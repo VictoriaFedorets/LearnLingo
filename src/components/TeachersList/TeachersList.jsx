@@ -1,21 +1,25 @@
 import { useEffect, useState, useMemo } from "react";
-import { fetchTeachers } from "../../redux/teachers/operations.js";
+import { fetchTeachersFromFirebase } from "../../redux/teachers/operations.js";
 import ModalLesson from "../ModalLesson/ModalLesson.jsx";
 import css from "./TeachersList.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTeachers } from "../../redux/teachers/selectors.js";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../redux/favorites/slice.js";
+import { selectFavorites } from "../../redux/favorites/selectors.js";
 
 export default function TeachersList({ filters }) {
-  const [teachers, setTeachers] = useState([]);
+  const dispatch = useDispatch();
+  const teachers = useSelector(selectTeachers);
+  const favorites = useSelector(selectFavorites);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [selectedTeacher, setSelectedTeacher] = useState(null);
 
   useEffect(() => {
-    const loadTeachers = async () => {
-      const data = await fetchTeachers();
-      setTeachers(data);
-    };
-    loadTeachers();
-  }, []);
-  console.log(filters);
+    dispatch(fetchTeachersFromFirebase());
+  }, [dispatch]);
 
   const filteredTeachers = useMemo(() => {
     return teachers.filter((teacher) => {
@@ -51,6 +55,14 @@ export default function TeachersList({ filters }) {
     setSelectedTeacher(null);
   };
 
+  const handleFavoriteToggle = (teacher) => {
+    if (favorites.some((favorite) => favorite.id === teacher.id)) {
+      dispatch(removeFromFavorites(teacher.id));
+    } else {
+      dispatch(addToFavorites(teacher));
+    }
+  };
+
   return (
     <>
       <ul className={css.teachersList}>
@@ -72,6 +84,9 @@ export default function TeachersList({ filters }) {
               experience,
             } = teacher;
             const isExpanded = expandedTeachers[id];
+            const isFavorite =
+              Array.isArray(favorites) &&
+              favorites.some((favorite) => favorite.id === id);
 
             return (
               <li className={css.teachersItem} key={id}>
@@ -108,9 +123,19 @@ export default function TeachersList({ filters }) {
                         <span className={css.price}>{price_per_hour}$</span>
                       </li>
                     </ul>
-                    <svg className={css.iconHeart}>
-                      <use href="/assets/icons/symbol-defs.svg#icon-heart"></use>
-                    </svg>
+                    <button
+                      className={`${css.iconHeart} ${
+                        isFavorite ? css.favorite : ""
+                      }`} // Добавляем класс для визуализации избранного
+                      onClick={(e) => {
+                        e.preventDefault(); // Отменяем стандартное поведение кнопки
+                        handleFavoriteToggle(teacher); // Включаем/выключаем из избранного
+                      }}
+                    >
+                      <svg>
+                        <use href="/assets/icons/symbol-defs.svg#icon-heart"></use>
+                      </svg>
+                    </button>
                   </div>
 
                   <div className={css.teacherInfo}>

@@ -106,24 +106,32 @@
 }
 
 .iconHeart {
-  width: 26px;
-  height: 22px;
   fill: none;
   stroke-width: 2px;
-  stroke: #121417;
+  stroke: var(--main-text);
   margin-left: 66px;
   cursor: pointer;
-  transition: stroke 0.3s ease, fill 0.3s ease, stroke-width 0.3s ease,
-    transform 0.2s ease;
+  transition: stroke 0.3s ease, fill 0.3s ease, transform 0.2s ease;
 }
 
-.iconHeart:hover,
+.iconHeart svg {
+  width: 26px;
+  height: 22px;
+}
+
+.favorite {
+  stroke: var(--yellow-maize);
+  fill: var(--yellow-maize);
+  transform: scale(1.2);
+}
+
+/* .iconHeart:hover,
 .iconHeart:focus {
   stroke: #f4c550;
   fill: #f4c550;
   stroke-width: 2px;
   transform: scale(1.2);
-}
+} */
 
 .teacherInfo {
   margin: 32px 0;
@@ -140,7 +148,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
-  color: #8a8a89;
+  color: var(--gray-text);
 }
 
 .teacherInfo p:not(:last-of-type) {

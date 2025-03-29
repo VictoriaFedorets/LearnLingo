@@ -1,8 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/slice.js";
-import teacherReducer from "./teachers/slise.js";
-// import filtersReducer from "./filtersSlice.js";
-// import favouritesReducer from "./favourites/slice.js";
+import teachersReducer from "./teachers/sliсe.js";
+import favoritesReducer from "./favorites/slice.js";
 
 import {
   persistStore,
@@ -19,14 +18,13 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root",
   storage,
-  //   whitelist: ["favourites"], // Тільки favourites буде збережено
+  whitelist: ["favourites"], // Тільки favourites буде збережено
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  teacher: teacherReducer,
-  //   filters: filtersReducer,
-  // favourites: favouritesReducer,
+  teachers: teachersReducer,
+  favorites: favoritesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
