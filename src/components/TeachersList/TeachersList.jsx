@@ -172,12 +172,13 @@ export default function TeachersList({ filters }) {
 
                   <button
                     className={isExpanded ? css.btnBookLesson : css.btnReadMore}
-                    onClick={() => {
+                    onClick={(e) => {
                       if (isExpanded) {
                         openModal(teacher);
                       } else {
                         toggleExpand(id);
                       }
+                      e.target.blur(); // Убираем фокус с кнопки
                     }}
                   >
                     {isExpanded ? "Book trial lesson" : "Read more"}

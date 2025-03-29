@@ -59,6 +59,13 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 156%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.homeBtn:hover,
+.homeBtn:focus {
+  background: #ffdc86;
+  transform: scale(0.95);
 }
 
 .homeImg {

@@ -96,6 +96,13 @@
   height: 60px;
   background: var(--yellow-maize);
   margin-top: 40px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnBook:hover,
+.btnBook:focus {
+  background: #ffdc86;
+  transform: scale(0.95);
 }
 
 .input {

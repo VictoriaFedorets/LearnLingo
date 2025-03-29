@@ -113,6 +113,16 @@
   stroke: #121417;
   margin-left: 66px;
   cursor: pointer;
+  transition: stroke 0.3s ease, fill 0.3s ease, stroke-width 0.3s ease,
+    transform 0.2s ease;
+}
+
+.iconHeart:hover,
+.iconHeart:focus {
+  stroke: #f4c550;
+  fill: #f4c550;
+  stroke-width: 2px;
+  transform: scale(1.2);
 }
 
 .teacherInfo {
@@ -154,6 +164,12 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   margin-top: 32px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.btnReadMore:hover,
+.btnReadMore:focus {
+  color: var(--yellow-maize);
 }
 
 .teachersListBtn {
@@ -167,6 +183,13 @@
   height: 60px;
   display: block;
   margin: 64px auto 96px auto;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.teachersListBtn:hover,
+.teachersListBtn:focus {
+  background: #ffdc86;
+  transform: scale(0.95);
 }
 
 .levelBlock {
@@ -252,4 +275,12 @@
   font-size: 18px;
   line-height: 156%;
   margin-top: 32px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnBookLesson:hover,
+.btnBookLesson:focus {
+  outline: none;
+  background: #ffdc86;
+  transform: scale(0.95);
 }

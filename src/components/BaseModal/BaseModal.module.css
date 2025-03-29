@@ -38,4 +38,11 @@
   height: 20px;
   stroke-width: 2.5px;
   stroke: var(--main-text);
+  transition: stroke 0.3s ease, transform 0.2s ease;
+}
+
+.closeButton:hover .iconClose,
+.closeButton:focus .iconClose {
+  stroke: #ffdc86;
+  transform: scale(0.95);
 }

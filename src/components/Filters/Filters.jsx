@@ -24,7 +24,6 @@ export default function Filters({ onFilterChange }) {
   const prevFiltersRef = useRef(selectedFilters);
 
   useEffect(() => {
-    // Перевіряємо, чи змінилися фільтри
     if (
       prevFiltersRef.current.language !== selectedFilters.language ||
       prevFiltersRef.current.level !== selectedFilters.level ||

@@ -1,5 +1,4 @@
 .header {
-  /* max-width: 1440px; */
   max-width: 1184px;
   width: 100%;
   margin: 0 auto;
@@ -17,12 +16,27 @@
   font-size: 20px;
   line-height: 120%;
   letter-spacing: -0.02em;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.headerLogo:hover {
+  color: var(--yellow-maize);
 }
 
 .headerNav {
   font-size: 16px;
   line-height: 125%;
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--yellow-maize);
+}
+
+.headerNav .active {
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .headerNav .link:first-child {
@@ -41,6 +55,13 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.headerLogIn:hover,
+.headerLogIn:focus {
+  transform: scale(0.95);
+  color: var(--yellow-maize);
 }
 
 .iconLogIn {
@@ -55,21 +76,22 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
-  color: #fff;
+  color: var(--background);
   border-radius: 12px;
   padding: 14px 39px;
   width: 166px;
   height: 48px;
-  background: #121417;
+  background: var(--main-text);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.headerRegistration:hover,
+.headerRegistration:focus {
+  transform: scale(0.95);
+  color: var(--yellow-maize);
 }
 
 .iconLogo {
   width: 28px;
   height: 28px;
-}
-
-.headerNav .active {
-  color: var(--yellow-maize);
-  font-weight: 700;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
