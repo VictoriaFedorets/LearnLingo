@@ -1,11 +1,8 @@
+import { toast } from "react-toastify";
 import BaseModal from "../BaseModal/BaseModal.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-// import {
-//   selectAuthError,
-// } from "../../redux/auth/selectors.js";
-// import { useSelector } from "react-redux";
 import css from "./ModalLesson.module.css";
 
 const schema = yup.object().shape({
@@ -22,14 +19,23 @@ const schema = yup.object().shape({
 });
 
 export default function ModalLesson({ teacher, onClose }) {
-  //   const error = useSelector(selectAuthError);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+
+    toast.success("Your request has been sent successfully!");
+
+    reset();
+    onClose();
+  };
 
   return (
     <BaseModal onClose={onClose}>
@@ -58,55 +64,30 @@ export default function ModalLesson({ teacher, onClose }) {
           What is your main reason for learning English?
         </h2>
 
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={css.radioGroup}>
             <label>
-              <input
-                type="radio"
-                name="reason"
-                value="career"
-                {...register("reason")}
-              />
+              <input type="radio" value="career" {...register("reason")} />
               Career and business
             </label>
-
             <label>
-              <input
-                type="radio"
-                name="reason"
-                value="lesson"
-                {...register("reason")}
-              />
+              <input type="radio" value="lesson" {...register("reason")} />
               Lesson for kids
             </label>
-
             <label>
               <input
                 type="radio"
-                name="reason"
                 value="livingAbroad"
                 {...register("reason")}
               />
               Living abroad
             </label>
-
             <label>
-              <input
-                type="radio"
-                name="reason"
-                value="exams"
-                {...register("reason")}
-              />
+              <input type="radio" value="exams" {...register("reason")} />
               Exams and coursework
             </label>
-
             <label>
-              <input
-                type="radio"
-                name="reason"
-                value="culture"
-                {...register("reason")}
-              />
+              <input type="radio" value="culture" {...register("reason")} />
               Culture, travel or hobby
             </label>
             {errors.reason && (
@@ -121,29 +102,27 @@ export default function ModalLesson({ teacher, onClose }) {
               autoComplete="name"
               className={css.input}
               {...register("name")}
-            ></input>
+            />
             {errors.name && <p className={css.error}>{errors.name.message}</p>}
 
             <input
               type="email"
-              name="email"
               placeholder="Email"
               autoComplete="email"
               className={css.input}
               {...register("email")}
-            ></input>
+            />
             {errors.email && (
               <p className={css.error}>{errors.email.message}</p>
             )}
 
             <input
               type="tel"
-              name="phone"
               placeholder="Phone number"
               autoComplete="tel"
               className={css.input}
               {...register("phone")}
-            ></input>
+            />
             {errors.phone && (
               <p className={css.error}>{errors.phone.message}</p>
             )}

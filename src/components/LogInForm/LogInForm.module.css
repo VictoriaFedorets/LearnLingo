@@ -21,7 +21,7 @@
 .loginInput {
   font-size: 16px;
   line-height: 137%;
-  border: 1px solid rgba(18, 20, 23, 0.1);
+  border: 1px solid var(--border-input);
   border-radius: 12px;
   padding: 16px 18px;
   width: 100%;
@@ -47,7 +47,7 @@
 
 .loginBtn:hover,
 .loginBtn:focus {
-  background: #ffdc86;
+  background: var(--yellow-light-hover);
   transform: scale(0.95);
 }
 

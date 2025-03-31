@@ -30,7 +30,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
-  color: #121417;
+  color: var(--main-text);
 }
 
 .modalTeacherName {
@@ -62,11 +62,11 @@
   appearance: none;
   width: 24px;
   height: 24px;
-  border: 2px solid gray;
+  border: 2px solid var(--gray-text);
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  background: white;
+  background: var(--background);
   cursor: pointer;
 }
 
@@ -101,7 +101,7 @@
 
 .btnBook:hover,
 .btnBook:focus {
-  background: #ffdc86;
+  background: var(--yellow-light-hover);
   transform: scale(0.95);
 }
 

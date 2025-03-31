@@ -1,0 +1,19 @@
+.teachersListBtn {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  background: var(--yellow-maize);
+  border-radius: 12px;
+  padding: 16px 48px;
+  width: 183px;
+  height: 60px;
+  display: block;
+  margin: 64px auto 96px auto;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.teachersListBtn:hover,
+.teachersListBtn:focus {
+  background: var(--yellow-light-hover);
+  transform: scale(0.95);
+}

@@ -58,6 +58,14 @@
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
+.headerUser {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 125%;
+}
+
 .headerLogIn:hover,
 .headerLogIn:focus {
   transform: scale(0.95);
@@ -73,6 +81,9 @@
 }
 
 .headerRegistration {
+  display: flex; /* Элементы будут располагаться друг под другом */
+  align-items: center; /* Выравнивание по горизонтали */
+  justify-content: center;
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
@@ -94,4 +105,5 @@
 .iconLogo {
   width: 28px;
   height: 28px;
+  margin-left: 4px;
 }

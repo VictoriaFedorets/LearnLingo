@@ -9,11 +9,14 @@ import {
   removeFromFavorites,
 } from "../../redux/favorites/slice.js";
 import { selectFavorites } from "../../redux/favorites/selectors.js";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+import { toast } from "react-toastify";
 
 export default function TeachersList({ filters }) {
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
   const favorites = useSelector(selectFavorites);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [selectedTeacher, setSelectedTeacher] = useState(null);
 
@@ -56,10 +59,17 @@ export default function TeachersList({ filters }) {
   };
 
   const handleFavoriteToggle = (teacher) => {
+    if (!isLoggedIn) {
+      toast.warning("You need to log in to add favorites!");
+      return;
+    }
+
     if (favorites.some((favorite) => favorite.id === teacher.id)) {
       dispatch(removeFromFavorites(teacher.id));
+      toast.info("Removed from favorites!");
     } else {
       dispatch(addToFavorites(teacher));
+      toast.success("Added to favorites!");
     }
   };
 

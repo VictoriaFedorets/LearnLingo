@@ -11,7 +11,7 @@ export default function FavoritesPage() {
   const favorites = useSelector(selectFavorites);
   const loading = useSelector((state) => state.teachers.loading);
   const error = useSelector((state) => state.teachers.error);
-  console.log("Favorites state:", favorites);
+  //   console.log("Favorites state:", favorites);
 
   useEffect(() => {
     dispatch(fetchTeachersFromFirebase());

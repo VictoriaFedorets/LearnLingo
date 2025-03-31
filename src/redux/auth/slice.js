@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   user: null,
+  token: null,
   isLoading: false,
   isLoggedIn: false,
   error: null,
@@ -16,7 +17,15 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    resetAuthState: (state) => {
+      state.user = null;
+      state.token = null;
+      state.isLoggedIn = false;
+      state.isLoading = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Реєстрація
@@ -50,6 +59,7 @@ const authSlice = createSlice({
       // Логаут
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;
+        state.token = null;
         state.isLoading = false;
         state.isLoggedIn = false;
       })
@@ -70,4 +80,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { resetAuthState } = authSlice.actions;
 export default authSlice.reducer;

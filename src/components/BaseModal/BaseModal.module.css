@@ -43,6 +43,6 @@
 
 .closeButton:hover .iconClose,
 .closeButton:focus .iconClose {
-  stroke: #ffdc86;
+  stroke: var(--yellow-maize);
   transform: scale(0.95);
 }
