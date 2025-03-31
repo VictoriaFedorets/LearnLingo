@@ -97,24 +97,32 @@
 }
 
 .iconHeart {
-  width: 26px;
-  height: 22px;
   fill: none;
   stroke-width: 2px;
   stroke: var(--main-text);
   margin-left: 66px;
   cursor: pointer;
-  transition: stroke 0.3s ease, fill 0.3s ease, stroke-width 0.3s ease,
-    transform 0.2s ease;
+  transition: stroke 0.3s ease, fill 0.3s ease, transform 0.2s ease;
 }
 
-.iconHeart:hover,
-.iconHeart:focus {
+.iconHeart svg {
+  width: 26px;
+  height: 22px;
+}
+
+.favorite {
   stroke: var(--yellow-maize);
   fill: var(--yellow-maize);
-  stroke-width: 2px;
   transform: scale(1.2);
 }
+
+/* .iconHeart:hover,
+.iconHeart:focus {
+  stroke: #f4c550;
+  fill: #f4c550;
+  stroke-width: 2px;
+  transform: scale(1.2);
+} */
 
 .teacherInfo {
   margin: 32px 0;
@@ -161,26 +169,6 @@
 .btnReadMore:hover,
 .btnReadMore:focus {
   color: var(--yellow-maize);
-}
-
-.teachersListBtn {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 156%;
-  background: var(--yellow-maize);
-  border-radius: 12px;
-  padding: 16px 48px;
-  width: 183px;
-  height: 60px;
-  display: block;
-  margin: 64px auto 96px auto;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.teachersListBtn:hover,
-.teachersListBtn:focus {
-  background: var(--yellow-light-hover);
-  transform: scale(0.95);
 }
 
 .levelBlock {
@@ -239,7 +227,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
-  color: var(--gray-text);
+  color: #8a8a89;
   margin-bottom: 2px;
 }
 

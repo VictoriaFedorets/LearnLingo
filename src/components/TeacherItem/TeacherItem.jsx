@@ -2,9 +2,12 @@ import css from "./TeacherItem.module.css";
 
 export default function TeacherItem({
   teacher,
+  isFavorite,
+  onFavoriteToggle,
+  onOpenModal,
   isExpanded,
   toggleExpand,
-  openModal,
+  isLoggedIn,
 }) {
   const {
     id,
@@ -57,9 +60,19 @@ export default function TeacherItem({
               <span className={css.price}>{price_per_hour}$</span>
             </li>
           </ul>
-          <svg className={css.iconHeart}>
-            <use href="/assets/icons/symbol-defs.svg#icon-heart"></use>
-          </svg>
+          <button
+            className={`${css.iconHeart} ${
+              isFavorite && isLoggedIn ? css.favorite : ""
+            }`} // Добавляем класс для визуализации избранного
+            onClick={(e) => {
+              e.preventDefault(); // Отменяем стандартное поведение кнопки
+              onFavoriteToggle(teacher); // Включаем/выключаем из избранного
+            }}
+          >
+            <svg>
+              <use href="/assets/icons/symbol-defs.svg#icon-heart"></use>
+            </svg>
+          </button>
         </div>
 
         <div className={css.teacherInfo}>
@@ -118,11 +131,11 @@ export default function TeacherItem({
           className={isExpanded ? css.btnBookLesson : css.btnReadMore}
           onClick={(e) => {
             if (isExpanded) {
-              openModal(teacher);
+              onOpenModal(teacher);
             } else {
               toggleExpand(id);
             }
-            e.target.blur();
+            e.target.blur(); // Убираем фокус с кнопки
           }}
         >
           {isExpanded ? "Book trial lesson" : "Read more"}

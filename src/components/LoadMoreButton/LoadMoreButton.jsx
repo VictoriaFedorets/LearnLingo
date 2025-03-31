@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./LoadMoreButton.module.css";
 
-const LoadMoreButton = () => {
+export default function LoadMoreButton() {
   const loadMoreTeachers = () => {
     // Логика для загрузки дополнительных преподавателей
     console.log("Load more teachers");
@@ -12,6 +12,4 @@ const LoadMoreButton = () => {
       Load more
     </button>
   );
-};
-
-export default LoadMoreButton;
+}

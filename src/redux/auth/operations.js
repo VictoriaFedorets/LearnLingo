@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import toast from "react-hot-toast";
 import { resetAuthState } from "./slice.js";
+import { resetFavorites } from "../favorites/slice.js";
 
 // Реєстрація користувача
 export const registerUser = createAsyncThunk(
@@ -64,7 +65,9 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await signOut(auth);
+      // dispatch(resetFavorites()); // Очистка избранного при выходе
     } catch (error) {
+      toast.error("Error during logout: " + error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -89,6 +92,7 @@ export const refreshUser = createAsyncThunk(
         token,
       };
     } catch (error) {
+      toast.error("Error during token refresh: " + error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -120,7 +124,8 @@ export const authStateListener = () => {
         dispatch(refreshUser());
       } else {
         dispatch(resetAuthState()); // Очищаємо стейт, якщо юзер вийшов
-        console.log("User signed out");
+        dispatch(resetFavorites());
+        // console.log("User signed out");
       }
     });
   };

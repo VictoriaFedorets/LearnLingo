@@ -83,7 +83,7 @@ export default function App() {
         <Route
           path="/favorites"
           element={
-            <PrivateRoute redirectTo="/login" component={<FavoritesPage />} />
+            <PrivateRoute redirectTo="/" component={<FavoritesPage />} />
           }
         />
 
