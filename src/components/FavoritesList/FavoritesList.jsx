@@ -15,6 +15,7 @@ export default function FavoritesList() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [selectedTeacher, setSelectedTeacher] = useState(null);
+  const [visibleTeachers, setVisibleTeachers] = useState(4);
 
   const toggleExpand = (id) => {
     setExpandedTeachers((prev) => ({
@@ -45,7 +46,7 @@ export default function FavoritesList() {
     <>
       <ul className={css.teachersList}>
         {favorites.length > 0 ? (
-          favorites.map((teacher) => (
+          favorites.slice(0, visibleTeachers).map((teacher) => (
             <TeacherItem
               key={teacher.id}
               teacher={teacher}
@@ -61,7 +62,11 @@ export default function FavoritesList() {
           <p className={css.noResults}>No favorite teachers yet</p>
         )}
       </ul>
-      <LoadMoreButton />
+      <LoadMoreButton
+        teachers={favorites}
+        visibleTeachers={visibleTeachers}
+        setVisibleTeachers={setVisibleTeachers}
+      />
       {selectedTeacher && (
         <ModalLesson teacher={selectedTeacher} onClose={closeModal} />
       )}

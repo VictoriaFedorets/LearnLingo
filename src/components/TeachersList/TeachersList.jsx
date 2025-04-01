@@ -21,6 +21,7 @@ export default function TeachersList({ filters }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [selectedTeacher, setSelectedTeacher] = useState(null);
+  const [visibleTeachers, setVisibleTeachers] = useState(4);
 
   useEffect(() => {
     dispatch(fetchTeachersFromFirebase());
@@ -79,23 +80,29 @@ export default function TeachersList({ filters }) {
     <>
       <ul className={css.teachersList}>
         {filteredTeachers.length > 0 ? (
-          filteredTeachers.map((teacher) => (
-            <TeacherItem
-              key={teacher.id}
-              teacher={teacher}
-              isFavorite={favorites.some((fav) => fav.id === teacher.id)}
-              onFavoriteToggle={() => handleFavoriteToggle(teacher)}
-              onOpenModal={() => openModal(teacher)}
-              isExpanded={expandedTeachers[teacher.id]}
-              toggleExpand={() => toggleExpand(teacher.id)}
-              isLoggedIn={isLoggedIn}
-            />
-          ))
+          filteredTeachers
+            .slice(0, visibleTeachers)
+            .map((teacher) => (
+              <TeacherItem
+                key={teacher.id}
+                teacher={teacher}
+                isFavorite={favorites.some((fav) => fav.id === teacher.id)}
+                onFavoriteToggle={() => handleFavoriteToggle(teacher)}
+                onOpenModal={() => openModal(teacher)}
+                isExpanded={expandedTeachers[teacher.id]}
+                toggleExpand={() => toggleExpand(teacher.id)}
+                isLoggedIn={isLoggedIn}
+              />
+            ))
         ) : (
           <p className={css.noResults}>No teachers found</p>
         )}
       </ul>
-      <LoadMoreButton />
+      <LoadMoreButton
+        teachers={filteredTeachers}
+        visibleTeachers={visibleTeachers}
+        setVisibleTeachers={setVisibleTeachers}
+      />
 
       {selectedTeacher && (
         <ModalLesson teacher={selectedTeacher} onClose={closeModal} />

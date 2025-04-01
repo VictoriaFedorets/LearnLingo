@@ -28,19 +28,28 @@ export default function ScrollToTop() {
         bottom: "50px",
         right: "50px",
         padding: "12px 14px",
-        backgroundColor: isHovered ? "var(--button-hover)" : "var(--button)",
-        color: "var(--white)",
-        border: "none",
+        backgroundColor: "var(--background)",
+        color: "var(--yellow-maize)",
+        border: isHovered ? "1px solid var(--yellow-light-cream)" : "none",
         borderRadius: "50%",
-        boxShadow: "0 4px 6px var(--background)",
+        boxShadow: isHovered
+          ? "0 6px 12px rgba(0, 0, 0, 0.2)"
+          : "0 6px 12px rgba(0, 0, 0, 0.1)",
         cursor: "pointer",
         opacity: isVisible ? 1 : 0,
         pointerEvents: isVisible ? "auto" : "none",
         transition:
-          "opacity 0.3s ease-in-out, background-color 0.3s ease-in-out",
+          "opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border 0.3s ease-in-out",
       }}
     >
-      <ArrowUp size={24} />
+      <ArrowUp
+        style={{
+          color: isHovered
+            ? "var(--yellow-maize)"
+            : "var(--yellow-light-hover)",
+        }}
+        size={24}
+      />
     </button>
   );
 }
