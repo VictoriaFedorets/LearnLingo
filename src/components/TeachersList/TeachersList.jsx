@@ -35,13 +35,22 @@ export default function TeachersList({ filters }) {
         lang.toLowerCase()
       ); // Приведення мов до нижнього регістру
 
+      const priceRanges = {
+        10: [10, 19],
+        20: [20, 29],
+        30: [30, 39],
+        40: [40, 100],
+      };
+
       return (
         (!language || teacherLanguages.includes(language.toLowerCase())) &&
         (!level ||
           teacher.levels.some((lvl) =>
             lvl.toLowerCase().includes(level.toLowerCase())
           )) && // Перевірка рівнів з урахуванням регістру
-        (!price || teacherPrice === price) // Перевірка ціни
+        (!price ||
+          (teacherPrice >= priceRanges[price][0] &&
+            teacherPrice <= priceRanges[price][1]))
       );
     });
   }, [teachers, filters]);
@@ -92,6 +101,7 @@ export default function TeachersList({ filters }) {
                 isExpanded={expandedTeachers[teacher.id]}
                 toggleExpand={() => toggleExpand(teacher.id)}
                 isLoggedIn={isLoggedIn}
+                selectedLevel={filters.level}
               />
             ))
         ) : (

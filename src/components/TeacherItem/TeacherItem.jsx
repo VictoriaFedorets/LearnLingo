@@ -8,6 +8,7 @@ export default function TeacherItem({
   isExpanded,
   toggleExpand,
   isLoggedIn,
+  selectedLevel,
 }) {
   const {
     id,
@@ -24,6 +25,10 @@ export default function TeacherItem({
     conditions,
     experience,
   } = teacher;
+
+  // Добавим проверки для переменных, которые могут быть undefined или null
+
+  const safeLevels = levels ? levels : [];
 
   return (
     <li className={css.teachersItem} key={id}>
@@ -120,8 +125,18 @@ export default function TeacherItem({
         )}
 
         <ul className={css.levelBlock}>
-          {levels.map((level, index) => (
-            <li className={css.levelItem} key={index}>
+          {safeLevels.map((level, index) => (
+            <li
+              key={index}
+              className={`${css.levelItem} ${
+                selectedLevel &&
+                level &&
+                level.toLowerCase && // Проверка на наличие метода toLowerCase
+                selectedLevel.toLowerCase() === level.toLowerCase()
+                  ? css.selectedLevel // Добавляем класс для выделения
+                  : ""
+              }`}
+            >
               #{level}
             </li>
           ))}

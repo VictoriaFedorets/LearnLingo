@@ -16,11 +16,33 @@
 .filterSelect {
   border: none;
   border-radius: 14px;
-  padding: 0 18px;
+  padding: 14px 38px 14px 18px;
   width: 221px;
-  height: 48px;
   background: var(--background);
   font-weight: 500;
   font-size: 18px;
   line-height: 111%;
+
+  appearance: none; /* Убираем стандартную стрелку */
+  -webkit-appearance: none; /* Для Safari */
+  -moz-appearance: none; /* Для Firefox */
+  background-image: url("/public/assets/icons/chevron-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 20px;
+  cursor: pointer;
+  outline: none; /* Убираем контур, если фокус */
+}
+
+.filterSelect:focus {
+  outline: none; /* Убираем контур при фокусе */
+  box-shadow: none; /* Убираем тень */
+}
+
+.filterSelect option {
+  color: var(--gray-text); /* Серый цвет для всех */
+}
+
+.filterSelect option:checked {
+  color: #121417; /* Чёрный цвет для выбранного */
 }

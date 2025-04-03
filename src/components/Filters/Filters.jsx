@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
+import { useSelector } from "react-redux";
+import { selectTeachers } from "../../redux/teachers/selectors.js";
 import css from "./Filters.module.css";
 
 const schema = yup.object().shape({
@@ -9,6 +11,10 @@ const schema = yup.object().shape({
   level: yup.string().required("Select a level"),
   price: yup.string().required("Select a price"),
 });
+
+const getUniqueValues = (data, key) => {
+  return [...new Set(data.flatMap((item) => item[key]))];
+};
 
 export default function Filters({ onFilterChange }) {
   const {
@@ -20,14 +26,31 @@ export default function Filters({ onFilterChange }) {
     defaultValues: { language: "", level: "", price: "" },
   });
 
-  const selectedFilters = watch(); // Получаем все значения сразу
+  const selectedFilters = watch(); // Отримуємо всі значення одразу
   const prevFiltersRef = useRef(selectedFilters);
+  const teachers = useSelector(selectTeachers);
+
+  const uniqueLanguages = useMemo(
+    () => getUniqueValues(teachers, "languages"),
+    [teachers]
+  );
+  const uniqueLevels = useMemo(
+    () => getUniqueValues(teachers, "levels"),
+    [teachers]
+  );
+  // const uniquePrice = useMemo(
+  //   () => getUniqueValues(teachers, "price_per_hour").sort((a, b) => a - b),
+  //   [teachers]
+  // );
 
   useEffect(() => {
+    const { language, level, price } = selectedFilters;
+    const prev = prevFiltersRef.current;
+
     if (
-      prevFiltersRef.current.language !== selectedFilters.language ||
-      prevFiltersRef.current.level !== selectedFilters.level ||
-      prevFiltersRef.current.price !== selectedFilters.price
+      prev.language !== language ||
+      prev.level !== level ||
+      prev.price !== price
     ) {
       onFilterChange(selectedFilters);
       prevFiltersRef.current = selectedFilters; // Зберігаємо поточні фільтри для порівняння наступного разу
@@ -40,11 +63,11 @@ export default function Filters({ onFilterChange }) {
         <p className={css.filterCategory}>Languages</p>
         <select className={css.filterSelect} {...register("language")}>
           <option value="">Select language</option>
-          <option value="french">French</option>
-          <option value="english">English</option>
-          <option value="spanish">Spanish</option>
-          <option value="german">German</option>
-          <option value="mandarin">Mandarin Chinese</option>
+          {uniqueLanguages.map((lang) => (
+            <option key={lang} value={lang.toLowerCase()}>
+              {lang}
+            </option>
+          ))}
         </select>
         {errors.language && <p>{errors.language.message}</p>}
       </label>
@@ -53,12 +76,11 @@ export default function Filters({ onFilterChange }) {
         <p className={css.filterCategory}>Level of knowledge</p>
         <select className={css.filterSelect} {...register("level")}>
           <option value="">Select level</option>
-          <option value="beginner">A1 Beginner</option>
-          <option value="elementary">A2 Elementary</option>
-          <option value="intermediate">B1 Intermediate</option>
-          <option value="upperInterm">B2 Upper-Intermediate</option>
-          <option value="advanced">C1 Advanced</option>
-          <option value="proficient">C2 Proficient</option>
+          {uniqueLevels.map((level) => (
+            <option key={level} value={level.toLowerCase()}>
+              {level}
+            </option>
+          ))}
         </select>
         {errors.level && <p>{errors.level.message}</p>}
       </label>
