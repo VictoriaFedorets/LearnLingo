@@ -1,21 +1,25 @@
-import { NavLink } from "react-router-dom";
 import clsx from "clsx";
+import { NavLink } from "react-router-dom";
 import { useCallback, useState } from "react";
-import BaseModal from "../BaseModal/BaseModal.jsx";
-import css from "./Header.module.css";
-import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors.js";
 import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors.js";
 import { logoutUser } from "../../redux/auth/operations.js";
+import BaseModal from "../BaseModal/BaseModal.jsx";
+import MobileMenu from "../MobileMenu/MobileMenu.jsx";
+import UserMenu from "../UserMenu/UserMenu.jsx";
+import css from "./Header.module.css";
 
 export default function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
-  // console.log(user);
+  
   const [baseModalState, setbaseModalState] = useState({
     isOpen: false,
     isLogin: true,
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const getNavLinkClass = ({ isActive }) =>
     clsx(css.link, isActive && css.active);
@@ -25,6 +29,7 @@ export default function Header() {
 
   const handleLogout = useCallback(() => {
     dispatch(logoutUser());
+    setIsUserMenuOpen(false);
   }, [dispatch]);
 
   return (
@@ -93,7 +98,43 @@ export default function Header() {
             </>
           )}
         </div>
+
+        <div className={css.mobMenu}>
+          <button
+            className={css.burgerBtn}
+            onClick={() => setIsUserMenuOpen(true)}
+          >
+            <svg className={css.iconBurger}>
+              <use href="/assets/icons/symbol-defs.svg#icon-user"></use>
+            </svg>
+          </button>
+
+          <button
+            className={clsx(css.burgerBtn, css.menuBtn)}
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <svg className={css.iconBurger}>
+              <use href="/assets/icons/symbol-defs.svg#icon-menu"></use>
+            </svg>
+          </button>
+        </div>
       </header>
+
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        getNavLinkClass={getNavLinkClass}
+        onClose={() => setIsMobileMenuOpen(false)}
+        isLoggedIn={isLoggedIn}
+      />
+
+      <UserMenu
+        user={user}
+        openBaseModal={openBaseModal}
+        handleLogout={handleLogout}
+        isOpen={isUserMenuOpen}
+        onClose={() => setIsUserMenuOpen(false)}
+        isLoggedIn={isLoggedIn}
+      />
 
       {baseModalState.isOpen && (
         <BaseModal

@@ -26,8 +26,7 @@ export default function TeacherItem({
     experience,
   } = teacher;
 
-  // Добавим проверки для переменных, которые могут быть undefined или null
-
+  // Перевірки для змінних, які можуть бути undefined чи null
   const safeLevels = levels ? levels : [];
 
   return (
@@ -68,10 +67,10 @@ export default function TeacherItem({
           <button
             className={`${css.iconHeart} ${
               isFavorite && isLoggedIn ? css.favorite : ""
-            }`} // Добавляем класс для визуализации избранного
+            }`}
             onClick={(e) => {
-              e.preventDefault(); // Отменяем стандартное поведение кнопки
-              onFavoriteToggle(teacher); // Включаем/выключаем из избранного
+              e.preventDefault(); // Відміна стандартної поведінки кнопки
+              onFavoriteToggle(teacher);
             }}
           >
             <svg>
@@ -131,9 +130,9 @@ export default function TeacherItem({
               className={`${css.levelItem} ${
                 selectedLevel &&
                 level &&
-                level.toLowerCase && // Проверка на наличие метода toLowerCase
+                level.toLowerCase &&
                 selectedLevel.toLowerCase() === level.toLowerCase()
-                  ? css.selectedLevel // Добавляем класс для выделения
+                  ? css.selectedLevel
                   : ""
               }`}
             >
@@ -150,7 +149,7 @@ export default function TeacherItem({
             } else {
               toggleExpand(id);
             }
-            e.target.blur(); // Убираем фокус с кнопки
+            e.target.blur(); // Прибираємо фокус з кнопки
           }}
         >
           {isExpanded ? "Book trial lesson" : "Read more"}

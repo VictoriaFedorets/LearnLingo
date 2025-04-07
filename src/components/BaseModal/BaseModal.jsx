@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import css from "./BaseModal.module.css";
 import LogInForm from "../LogInForm/LogInForm.jsx";
 import RegisterForm from "../RegisterForm/RegisterForm.jsx";
+import css from "./BaseModal.module.css";
 
 export default function BaseModal({ isLogin, onClose, children }) {
   useEffect(() => {

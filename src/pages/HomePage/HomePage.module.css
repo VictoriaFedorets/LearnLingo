@@ -1,29 +1,24 @@
-.hero {
-  max-width: 1440px;
-  padding: 0 64px;
-  margin: 0 auto;
-}
-
 .homePageHero {
   display: flex;
-  /* justify-content: center; */
+  flex-wrap: wrap;
   text-align: left;
+  align-items: center;
+  justify-content: center;
   gap: 24px;
-  margin-top: 20px;
   margin-bottom: 24px;
 }
 
 .home {
   border-radius: 30px;
-  width: 720px;
-  height: 530px;
+  max-width: 720px;
+  height: 100%;
   background: var(--background-gray);
-  padding: 96px 108px 96px 64px;
+  padding: 56px 20px;
 }
 
 .homeTitle {
   font-weight: 500;
-  font-size: 48px;
+  font-size: 28px;
   line-height: 117%;
   letter-spacing: -0.02em;
   margin-bottom: 32px;
@@ -51,8 +46,7 @@
 
 .homeBtn {
   border-radius: 12px;
-  padding: 16px 88px;
-  width: 267px;
+  padding: 16px 50px;
   height: 60px;
   background: var(--yellow-maize);
 
@@ -69,6 +63,22 @@
 }
 
 .homeImg {
-  width: 568px;
-  height: 530px;
+  width: 100%;
+  max-width: 568px;
+  min-height: 280px;
+  max-height: 530px;
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    padding: 96px 108px 96px 64px;
+  }
+
+  .homeTitle {
+    font-size: 48px;
+  }
+
+  .homeBtn {
+    padding: 16px 88px;
+  }
 }

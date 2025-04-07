@@ -1,8 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
-import { fetchTeachersFromFirebase } from "../../redux/teachers/operations.js";
-import ModalLesson from "../ModalLesson/ModalLesson.jsx";
-import css from "./TeachersList.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { fetchTeachersFromFirebase } from "../../redux/teachers/operations.js";
 import { selectTeachers } from "../../redux/teachers/selectors.js";
 import {
   addToFavorites,
@@ -10,9 +9,10 @@ import {
 } from "../../redux/favorites/slice.js";
 import { selectFavorites } from "../../redux/favorites/selectors.js";
 import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
-import { toast } from "react-toastify";
+import ModalLesson from "../ModalLesson/ModalLesson.jsx";
 import TeacherItem from "../TeacherItem/TeacherItem.jsx";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton.jsx";
+import css from "./TeachersList.module.css";
 
 export default function TeachersList({ filters }) {
   const dispatch = useDispatch();

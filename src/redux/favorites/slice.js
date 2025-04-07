@@ -13,7 +13,7 @@ const loadFavorites = () => {
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState: {
-    items: loadFavorites(), // Загружаем из localStorage с проверкой
+    items: loadFavorites(), // Завантажуємо з localStorage з перевірою
   },
   reducers: {
     addToFavorites: (state, action) => {
@@ -25,8 +25,8 @@ const favoritesSlice = createSlice({
       localStorage.setItem("favorites", JSON.stringify(state.items));
     },
     resetFavorites: (state) => {
-      state.items = []; // Очищаем state
-      localStorage.removeItem("favorites"); // Удаляем из localStorage
+      state.items = []; // Очищуємо state
+      localStorage.removeItem("favorites"); // Видаляємо з localStorage
     },
   },
 });

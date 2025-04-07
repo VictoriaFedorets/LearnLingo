@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 import { auth } from "../../../firebase.js";
 import {
   createUserWithEmailAndPassword,
@@ -8,7 +9,6 @@ import {
   getIdToken,
   updateProfile,
 } from "firebase/auth";
-import toast from "react-hot-toast";
 import { resetAuthState } from "./slice.js";
 import { resetFavorites } from "../favorites/slice.js";
 
@@ -65,7 +65,7 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await signOut(auth);
-      // dispatch(resetFavorites()); // Очистка избранного при выходе
+      // dispatch(resetFavorites()); // Очистка обраного при вході
     } catch (error) {
       toast.error("Error during logout: " + error.message);
       return rejectWithValue(error.message);
@@ -107,7 +107,6 @@ export const autoRefreshToken = () => {
         try {
           const token = await getIdToken(user, true);
           console.log("Token refreshed:", token);
-          // Тут можно обновить стейт, если нужно
         } catch (error) {
           console.error("Error refreshing token:", error.message);
         }

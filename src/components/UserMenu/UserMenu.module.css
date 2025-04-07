@@ -1,0 +1,110 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--backdrop);
+  z-index: 100;
+}
+
+.menu {
+  background: var(--background-gray);
+  padding: 40px 20px;
+  width: 80%;
+  max-width: 320px;
+  height: 100%;
+  box-shadow: 2px 0 10px var(--box-shadow-mob-menu);
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.iconClose {
+  display: block;
+  fill: none;
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5px;
+  stroke: var(--main-text);
+  transition: stroke 0.3s ease, transform 0.2s ease;
+}
+
+.closeButton:hover .iconClose,
+.closeButton:focus .iconClose {
+  stroke: var(--yellow-maize);
+  transform: scale(0.95);
+}
+
+.headerLogIn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  margin-bottom: 20px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.headerLogIn:hover,
+.headerLogIn:focus {
+  transform: scale(0.95);
+  color: var(--yellow-maize);
+}
+
+.headerAuthorization {
+  margin-top: 20px;
+}
+
+.headerUser {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 125%;
+  margin-bottom: 20px;
+}
+
+.iconLogIn {
+  fill: none;
+  width: 20px;
+  height: 20px;
+  stroke-width: 2px;
+  stroke: var(--yellow-maize);
+}
+
+.headerRegistration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--background);
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+  background: var(--main-text);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.headerRegistration:hover,
+.headerRegistration:focus {
+  transform: scale(0.95);
+  color: var(--yellow-maize);
+}
+
+.iconLogo {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+}

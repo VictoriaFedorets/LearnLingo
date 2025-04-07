@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../redux/auth/operations.js";
-import { selectIsLoading, selectAuthError } from "../../redux/auth/selectors";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import css from "./LogInForm.module.css";
 import { useState } from "react";
+import { loginUser } from "../../redux/auth/operations.js";
+import { selectIsLoading, selectAuthError } from "../../redux/auth/selectors";
+import css from "./LogInForm.module.css";
 
 const schema = yup.object().shape({
   email: yup.string().email("Incorrect email").required("Required field"),

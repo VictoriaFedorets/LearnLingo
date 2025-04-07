@@ -1,8 +1,8 @@
+import * as yup from "yup";
 import { toast } from "react-toastify";
-import BaseModal from "../BaseModal/BaseModal.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import BaseModal from "../BaseModal/BaseModal.jsx";
 import css from "./ModalLesson.module.css";
 
 const schema = yup.object().shape({

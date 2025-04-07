@@ -1,265 +1,301 @@
-.teachersItem {
-  background: var(--background);
-  border-radius: 24px;
-  padding: 24px;
-  width: 100%;
-  max-width: 1184px;
-  /* height: 328px; */
-  margin-bottom: 32px;
-  display: flex;
-  gap: 48px;
+@media screen and (min-width: 320px) {
+  .teachersItem {
+    position: relative;
+    background: var(--background);
+    border-radius: 24px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1184px;
+    margin-bottom: 32px;
+  }
+
+  .avatarBlock {
+    position: relative;
+    width: 120px;
+  }
+
+  .teacherAvatar {
+    border-radius: 100px;
+    width: 100%;
+    border: 3px solid var(--yellow-light-cream);
+    padding: 12px;
+    position: relative;
+  }
+
+  .iconPoint {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 19px;
+    right: 23px;
+  }
+
+  .teacherHeader {
+    width: 100%;
+  }
+
+  .teacherLessons {
+    text-align: right;
+    margin-bottom: 8px;
+  }
+
+  .teacherLessons h3 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--gray-text);
+    padding-right: 16px;
+    margin-bottom: 16px;
+  }
+
+  .lessonsList {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    margin-left: auto;
+  }
+
+  .lessonsList li {
+    text-align: right;
+    position: relative;
+    padding-right: 16px;
+  }
+
+  .lessonsList li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: var(--border-input);
+  }
+
+  .iconBook {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: var(--main-text);
+    margin-right: 16px;
+  }
+
+  .iconStar {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  .price {
+    /* margin-left: 4px; */
+    color: var(--green);
+  }
+
+  .iconHeart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    fill: none;
+    stroke-width: 2px;
+    stroke: var(--main-text);
+    margin-left: 66px;
+    cursor: pointer;
+    transition: stroke 0.3s ease, fill 0.3s ease, transform 0.2s ease;
+  }
+
+  .iconHeart svg {
+    width: 26px;
+    height: 22px;
+  }
+
+  .favorite {
+    stroke: var(--yellow-maize);
+    fill: var(--yellow-maize);
+    transform: scale(1.2);
+  }
+
+  .teacherInfo {
+    margin: 32px 0;
+  }
+
+  .teacherInfo h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 32px;
+  }
+
+  .teacherInfo p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--gray-text);
+  }
+
+  .teacherInfo p:not(:last-of-type) {
+    margin-bottom: 8px;
+  }
+
+  .teacherInfo p:first-of-type span {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: var(--main-text);
+  }
+
+  .teacherInfo span {
+    color: var(--main-text);
+  }
+
+  .btnReadMore {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    margin-top: 32px;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btnReadMore:hover,
+  .btnReadMore:focus {
+    color: var(--yellow-maize);
+  }
+
+  .levelBlock {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .levelItem {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 114%;
+    border: 1px solid var(--border-input);
+    border-radius: 35px;
+    padding: 8px 12px;
+  }
+
+  .selectedLevel {
+    background: var(--yellow-maize);
+    border: none;
+  }
+
+  .reviewerNameLetter {
+    border-radius: 50%;
+    border: 3px solid var(--yellow-maize);
+    width: 44px;
+    height: 44px;
+    background: var(--yellow-light-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: middle;
+    margin-right: 12px;
+  }
+
+  .reviewerItem {
+    margin-bottom: 32px;
+  }
+
+  .reviewerInfo {
+    display: flex;
+  }
+
+  .reviewers {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .reviewersExperience {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .reviewerName {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--gray-text);
+    margin-bottom: 2px;
+  }
+
+  .reviewerRating {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    margin-bottom: 16px;
+  }
+
+  .reviewerComment {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .btnBookLesson {
+    border-radius: 12px;
+    padding: 16px 48px;
+    width: 232px;
+    height: 60px;
+    background: var(--yellow-maize);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    margin-top: 32px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btnBookLesson:hover,
+  .btnBookLesson:focus {
+    outline: none;
+    background: var(--yellow-light-hover);
+    transform: scale(0.95);
+  }
 }
 
-.avatarBlock {
-  position: relative;
+@media screen and (min-width: 768px) {
+  .teachersItem {
+    padding: 24px;
+  }
+
+  .iconHeart {
+    top: 24px;
+    right: 24px;
+  }
+
+  .lessonsList {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .lessonsList li {
+    display: flex;
+    align-items: center;
+  }
 }
 
-.teacherAvatar {
-  border-radius: 100px;
-  width: 108px;
-  /* height: 108px; */
-  border: 3px solid var(--yellow-light-cream);
-  padding: 12px;
-  position: relative;
-}
+@media screen and (min-width: 1440px) {
+  .teachersItem {
+    position: static;
+    display: flex;
+    gap: 48px;
+  }
 
-.iconPoint {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  top: 19px;
-  right: 23px;
-}
+  .teacherLessons {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.teacherHeader {
-  width: 100%;
-}
+  .teacherLessons h3 {
+    padding-right: 30px;
+    margin-bottom: 0;
+  }
 
-.teacherLessons {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.teacherLessons h3 {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  color: var(--gray-text);
-  padding-right: 30px;
-}
-
-.lessonsList {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  margin-left: auto;
-}
-
-.lessonsList li {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-right: 16px;
-}
-
-.lessonsList li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 16px;
-  background: var(--border-input);
-}
-
-.iconBook {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: var(--main-text);
-  margin-right: 16px;
-}
-
-.iconStar {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-
-.price {
-  /* margin-left: 4px; */
-  color: var(--green);
-}
-
-.iconHeart {
-  fill: none;
-  stroke-width: 2px;
-  stroke: var(--main-text);
-  margin-left: 66px;
-  cursor: pointer;
-  transition: stroke 0.3s ease, fill 0.3s ease, transform 0.2s ease;
-}
-
-.iconHeart svg {
-  width: 26px;
-  height: 22px;
-}
-
-.favorite {
-  stroke: var(--yellow-maize);
-  fill: var(--yellow-maize);
-  transform: scale(1.2);
-}
-
-/* .iconHeart:hover,
-.iconHeart:focus {
-  stroke: #f4c550;
-  fill: #f4c550;
-  stroke-width: 2px;
-  transform: scale(1.2);
-} */
-
-.teacherInfo {
-  margin: 32px 0;
-}
-
-.teacherInfo h3 {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 100%;
-  margin-bottom: 32px;
-}
-
-.teacherInfo p {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  color: var(--gray-text);
-}
-
-.teacherInfo p:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.teacherInfo p:first-of-type span {
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  color: var(--main-text);
-}
-
-.teacherInfo span {
-  color: var(--main-text);
-}
-
-.btnReadMore {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  margin-top: 32px;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.btnReadMore:hover,
-.btnReadMore:focus {
-  color: var(--yellow-maize);
-}
-
-.levelBlock {
-  display: flex;
-  gap: 8px;
-}
-
-.levelItem {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 114%;
-  border: 1px solid var(--border-input);
-  border-radius: 35px;
-  padding: 8px 12px;
-  /* width: 124px;
-  height: 32px; */
-}
-
-.selectedLevel {
-  background: var(--yellow-maize);
-  border: none;
-}
-
-.reviewerNameLetter {
-  border-radius: 50%;
-  border: 3px solid var(--yellow-maize);
-  width: 44px;
-  height: 44px;
-  background: var(--yellow-light-cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: middle;
-  margin-right: 12px;
-}
-
-.reviewerItem {
-  margin-bottom: 32px;
-}
-
-.reviewerInfo {
-  display: flex;
-}
-
-.reviewers {
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
-}
-
-.reviewersExperience {
-  font-size: 16px;
-  margin-bottom: 32px;
-}
-
-.reviewerName {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  color: #8a8a89;
-  margin-bottom: 2px;
-}
-
-.reviewerRating {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 129%;
-  margin-bottom: 16px;
-}
-
-.reviewerComment {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-}
-
-.btnBookLesson {
-  border-radius: 12px;
-  padding: 16px 48px;
-  width: 232px;
-  height: 60px;
-  background: var(--yellow-maize);
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 156%;
-  margin-top: 32px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btnBookLesson:hover,
-.btnBookLesson:focus {
-  outline: none;
-  background: var(--yellow-light-hover);
-  transform: scale(0.95);
+  .iconHeart {
+    position: static;
+  }
 }

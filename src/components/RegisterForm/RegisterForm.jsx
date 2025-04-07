@@ -1,6 +1,7 @@
+import * as yup from "yup";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/auth/operations.js";
 import {
@@ -8,7 +9,6 @@ import {
   selectAuthError,
 } from "../../redux/auth/selectors.js";
 import css from "./RegisterForm.module.css";
-import { useState } from "react";
 
 const schema = yup.object().shape({
   name: yup

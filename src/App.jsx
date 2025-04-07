@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations.js";
 import { selectIsLoggedIn, selectIsLoading } from "./redux/auth/selectors.js";
@@ -16,9 +17,8 @@ import Loader from "./components/Loader/Loader.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import RestrictedRoute from "./components/Routes/RestrictedRoute.jsx";
-import { ToastContainer } from "react-toastify";
 
-import Header from "./components/Header/Header.jsx";
+import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TeachersPage = lazy(() =>
@@ -54,42 +54,45 @@ export default function App() {
   }
 
   return (
-    <Suspense fallback={<Loader />}>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        limit={3}
-        hideProgressBar
-        closeOnClick
-        pauseOnHover
-        draggable
-      />
-      {/* <Header /> */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/teachers" element={<TeachersPage />} />
-
-        <Route
-          path="/login"
-          element={<RestrictedRoute component={<LoginForm />} redirectTo="/" />}
+    <SharedLayout>
+      <Suspense fallback={<Loader />}>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          limit={3}
+          hideProgressBar
+          closeOnClick
+          pauseOnHover
+          draggable
         />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute component={<RegisterForm />} redirectTo="/" />
-          }
-        />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/teachers" element={<TeachersPage />} />
 
-        <Route
-          path="/favorites"
-          element={
-            <PrivateRoute redirectTo="/" component={<FavoritesPage />} />
-          }
-        />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute component={<LoginForm />} redirectTo="/" />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute component={<RegisterForm />} redirectTo="/" />
+            }
+          />
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-      <ScrollToTop />
-    </Suspense>
+          <Route
+            path="/favorites"
+            element={
+              <PrivateRoute redirectTo="/" component={<FavoritesPage />} />
+            }
+          />
+
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <ScrollToTop />
+      </Suspense>
+    </SharedLayout>
   );
 }

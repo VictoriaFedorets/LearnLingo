@@ -1,11 +1,10 @@
 .header {
-  max-width: 1184px;
   width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 20px 0 20px;
 }
 
 .headerLogo {
@@ -24,13 +23,13 @@
 }
 
 .headerNav {
+  display: none;
   font-size: 16px;
   line-height: 125%;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.link:hover,
-.link:focus {
+.link:hover {
   color: var(--yellow-maize);
 }
 
@@ -44,7 +43,7 @@
 }
 
 .headerAuthorization {
-  display: flex;
+  display: none;
   gap: 16px;
 }
 
@@ -58,18 +57,18 @@
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
+.headerLogIn:hover,
+.headerLogIn:focus {
+  transform: scale(0.95);
+  color: var(--yellow-maize);
+}
+
 .headerUser {
   display: flex;
   align-items: center;
   font-weight: 700;
   font-size: 20px;
   line-height: 125%;
-}
-
-.headerLogIn:hover,
-.headerLogIn:focus {
-  transform: scale(0.95);
-  color: var(--yellow-maize);
 }
 
 .iconLogIn {
@@ -81,8 +80,8 @@
 }
 
 .headerRegistration {
-  display: flex; /* Элементы будут располагаться друг под другом */
-  align-items: center; /* Выравнивание по горизонтали */
+  display: flex;
+  align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 16px;
@@ -106,4 +105,62 @@
   width: 28px;
   height: 28px;
   margin-left: 4px;
+}
+
+/* Mobile menu buttons container */
+.mobMenu {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  gap: 10px;
+}
+
+.burgerBtn {
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.iconBurger {
+  width: 28px;
+  height: 28px;
+  fill: var(--main-text);
+  stroke-width: 2.5px;
+  stroke: var(--main-text);
+  transition: stroke 0.3s ease, transform 0.2s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    max-width: 720px;
+    padding: 20px 0;
+  }
+
+  .headerNav {
+    display: flex;
+  }
+
+  .menuBtn {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1392px) {
+  .header {
+    max-width: 1184px;
+    padding: 20px 0 0;
+  }
+
+  .headerNav {
+    display: block;
+  }
+
+  .headerAuthorization {
+    display: flex;
+  }
+
+  .mobMenu {
+    display: none;
+  }
 }

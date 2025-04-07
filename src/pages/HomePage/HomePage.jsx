@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import css from "./HomePage.module.css";
-import Header from "../../components/Header/Header";
 import blockImage from "/assets/images/block.png";
 import Statistics from "../../components/Statistics/Statistics";
+import css from "./HomePage.module.css";
 
 export default function HomePage() {
   return (
-    <section className={css.hero}>
-      <Header />
+    <section>
       <div className={css.homePageHero}>
         <article className={css.home}>
           <h1 className={css.homeTitle}>
@@ -19,9 +17,10 @@ export default function HomePage() {
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </p>
-          <Link to="./teachers" className={css.homeBtn}>
-            Get started
-          </Link>
+
+          <button className={css.homeBtn}>
+            <Link to="./teachers">Get started</Link>
+          </button>
         </article>
         <img className={css.homeImg} src={blockImage} alt="children" />
       </div>
