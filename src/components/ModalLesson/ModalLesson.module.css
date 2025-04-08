@@ -1,3 +1,18 @@
+.modalContent {
+  max-width: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding-right: 8px;
+  box-sizing: border-box;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modalContent::-webkit-scrollbar {
+  display: none;
+}
+
 .modalTitle {
   font-weight: 500;
   font-size: 40px;

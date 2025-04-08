@@ -14,10 +14,14 @@
 
 .modal {
   background: var(--background);
-  padding: 64px;
+  padding: 32px 16px 24px;
   border-radius: 30px;
   position: relative;
-  width: 565px;
+  max-width: 565px;
+  width: 90vw;
+  max-height: 90vh; /* ограничим по высоте */
+  overflow-y: auto; /* скролл внутри */
+  box-sizing: border-box;
 }
 
 .closeButton {
@@ -26,16 +30,14 @@
   right: 20px;
   background: none;
   border: none;
-  width: 32px;
-  height: 32px;
   cursor: pointer;
 }
 
 .iconClose {
   display: block;
   fill: none;
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   stroke-width: 2.5px;
   stroke: var(--main-text);
   transition: stroke 0.3s ease, transform 0.2s ease;
@@ -45,4 +47,10 @@
 .closeButton:focus .iconClose {
   stroke: var(--yellow-maize);
   transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .modal {
+    padding: 64px;
+  }
 }
