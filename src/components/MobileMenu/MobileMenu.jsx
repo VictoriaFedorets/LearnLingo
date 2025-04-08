@@ -18,14 +18,18 @@ export default function MobileMenu({ isOpen, onClose, isLoggedIn }) {
         </button>
 
         <nav className={css.headerNav}>
-          <NavLink to="/" className={getNavLinkClass}>
+          <NavLink to="/" className={getNavLinkClass} onClick={onClose}>
             Home
           </NavLink>
-          <NavLink to="/teachers" className={getNavLinkClass}>
+          <NavLink to="/teachers" className={getNavLinkClass} onClick={onClose}>
             Teachers
           </NavLink>
           {isLoggedIn && (
-            <NavLink to="/favorites" className={getNavLinkClass}>
+            <NavLink
+              to="/favorites"
+              className={getNavLinkClass}
+              onClick={onClose}
+            >
               Favorites
             </NavLink>
           )}
