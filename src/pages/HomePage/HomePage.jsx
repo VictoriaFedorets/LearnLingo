@@ -18,9 +18,9 @@ export default function HomePage() {
             highly qualified and experienced tutors.
           </p>
 
-          <button className={css.homeBtn}>
-            <Link to="./teachers">Get started</Link>
-          </button>
+          <Link className={css.homeBtn} to="/teachers">
+            Get started
+          </Link>
         </article>
         <img className={css.homeImg} src={blockImage} alt="children" />
       </div>
