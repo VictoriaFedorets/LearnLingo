@@ -133,12 +133,6 @@ All authentication logic is handled via Firebase’s SDK and stored in Redux.
 
 ---
 
-## 📸 Screenshots
-
-> You can add screenshots or animated GIFs here to show key functionality.
-
----
-
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
