@@ -13,7 +13,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
-  
+
   const [baseModalState, setbaseModalState] = useState({
     isOpen: false,
     isLogin: true,

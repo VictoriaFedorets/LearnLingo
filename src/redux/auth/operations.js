@@ -30,7 +30,14 @@ export const registerUser = createAsyncThunk(
         name: user.displayName,
       };
     } catch (error) {
-      toast.error(error.message);
+      // Добавляем вывод подробной информации об ошибке
+      if (error.code === "auth/user-not-found") {
+        toast.error("No user found with this email.");
+      } else if (error.code === "auth/wrong-password") {
+        toast.error("Incorrect password.");
+      } else {
+        toast.error("Something went wrong");
+      }
       return rejectWithValue(error.message);
     }
   }
@@ -65,7 +72,6 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await signOut(auth);
-      // dispatch(resetFavorites()); // Очистка обраного при вході
     } catch (error) {
       toast.error("Error during logout: " + error.message);
       return rejectWithValue(error.message);

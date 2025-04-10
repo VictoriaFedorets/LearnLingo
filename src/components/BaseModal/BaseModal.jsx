@@ -3,10 +3,10 @@ import LogInForm from "../LogInForm/LogInForm.jsx";
 import RegisterForm from "../RegisterForm/RegisterForm.jsx";
 import css from "./BaseModal.module.css";
 
-export default function BaseModal({ isLogin, onClose, children }) {
+export default function BaseModal({ isLogin, onClose, children, error }) {
   useEffect(() => {
     const handleEsc = (event) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && !error) {
         onClose();
       }
     };
@@ -15,7 +15,7 @@ export default function BaseModal({ isLogin, onClose, children }) {
     return () => {
       document.removeEventListener("keydown", handleEsc);
     };
-  }, [onClose]);
+  }, [onClose, error]);
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -31,7 +31,13 @@ export default function BaseModal({ isLogin, onClose, children }) {
             <use href="/assets/icons/symbol-defs.svg#icon-x"></use>
           </svg>
         </button>
-        {children ? children : isLogin ? <LogInForm /> : <RegisterForm />}
+        {children ? (
+          children
+        ) : isLogin ? (
+          <LogInForm onClose={onClose} />
+        ) : (
+          <RegisterForm />
+        )}
       </div>
     </div>
   );

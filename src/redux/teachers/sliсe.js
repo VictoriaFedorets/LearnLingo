@@ -3,7 +3,7 @@ import { fetchTeachersFromFirebase } from "./operations";
 
 const initialState = {
   teachers: [],
-  loading: false,
+  isLoading: false,
   error: null,
 };
 

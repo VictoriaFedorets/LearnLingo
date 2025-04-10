@@ -107,7 +107,7 @@ export default function RegisterForm() {
         {isLoading ? "Registration..." : "Sign Up"}
       </button>
 
-      {error && <p className={css.registerError}>{error}</p>}
+      {/* {error && <p className={css.registerError}>{error}</p>} */}
     </form>
   );
 }

@@ -2,7 +2,10 @@ import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { fetchTeachersFromFirebase } from "../../redux/teachers/operations.js";
-import { selectTeachers } from "../../redux/teachers/selectors.js";
+import {
+  selectIsLoading,
+  selectTeachers,
+} from "../../redux/teachers/selectors.js";
 import {
   addToFavorites,
   removeFromFavorites,
@@ -12,6 +15,7 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 import ModalLesson from "../ModalLesson/ModalLesson.jsx";
 import TeacherItem from "../TeacherItem/TeacherItem.jsx";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton.jsx";
+import Loader from "../Loader/Loader.jsx";
 import css from "./TeachersList.module.css";
 
 export default function TeachersList({ filters }) {
@@ -19,6 +23,7 @@ export default function TeachersList({ filters }) {
   const teachers = useSelector(selectTeachers);
   const favorites = useSelector(selectFavorites);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoading = useSelector(selectIsLoading);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
@@ -87,27 +92,32 @@ export default function TeachersList({ filters }) {
 
   return (
     <>
-      <ul className={css.teachersList}>
-        {filteredTeachers.length > 0 ? (
-          filteredTeachers
-            .slice(0, visibleTeachers)
-            .map((teacher) => (
-              <TeacherItem
-                key={teacher.id}
-                teacher={teacher}
-                isFavorite={favorites.some((fav) => fav.id === teacher.id)}
-                onFavoriteToggle={() => handleFavoriteToggle(teacher)}
-                onOpenModal={() => openModal(teacher)}
-                isExpanded={expandedTeachers[teacher.id]}
-                toggleExpand={() => toggleExpand(teacher.id)}
-                isLoggedIn={isLoggedIn}
-                selectedLevel={filters.level}
-              />
-            ))
-        ) : (
-          <p className={css.noResults}>No teachers found</p>
-        )}
-      </ul>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ul className={css.teachersList}>
+          {filteredTeachers.length > 0 ? (
+            filteredTeachers
+              .slice(0, visibleTeachers)
+              .map((teacher) => (
+                <TeacherItem
+                  key={teacher.id}
+                  teacher={teacher}
+                  isFavorite={favorites.some((fav) => fav.id === teacher.id)}
+                  onFavoriteToggle={() => handleFavoriteToggle(teacher)}
+                  onOpenModal={() => openModal(teacher)}
+                  isExpanded={expandedTeachers[teacher.id]}
+                  toggleExpand={() => toggleExpand(teacher.id)}
+                  isLoggedIn={isLoggedIn}
+                  selectedLevel={filters.level}
+                />
+              ))
+          ) : (
+            <p className={css.noResults}>No teachers found</p>
+          )}
+        </ul>
+      )}
+
       <LoadMoreButton
         teachers={filteredTeachers}
         visibleTeachers={visibleTeachers}
