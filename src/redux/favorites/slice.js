@@ -1,75 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const loadFavorites = () => {
-  try {
-    const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
-    return Array.isArray(storedFavorites) ? storedFavorites : [];
-  } catch (error) {
-    console.error("Error loading favorites:", error);
-    return [];
-  }
-};
+import {
+  saveFavoritesToDatabase,
+  loadFavoritesFromDatabase,
+} from "../../services/firebaseOperations.js";
 
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState: {
-    items: loadFavorites(), // Завантажуємо з localStorage з перевірою
+    items: [],
   },
   reducers: {
+    setFavorites: (state, action) => {
+      state.items = action.payload;
+      saveFavoritesToDatabase(state.items);
+    },
     addToFavorites: (state, action) => {
       state.items.push(action.payload);
-      localStorage.setItem("favorites", JSON.stringify(state.items));
+      saveFavoritesToDatabase(state.items);
     },
     removeFromFavorites: (state, action) => {
       state.items = state.items.filter((fav) => fav.id !== action.payload);
-      localStorage.setItem("favorites", JSON.stringify(state.items));
+      saveFavoritesToDatabase(state.items);
     },
     resetFavorites: (state) => {
-      state.items = []; // Очищуємо state
-      localStorage.removeItem("favorites"); // Видаляємо з localStorage
+      state.items = [];
+      saveFavoritesToDatabase(state.items);
     },
   },
 });
 
-export const { addToFavorites, removeFromFavorites, resetFavorites } =
-  favoritesSlice.actions;
+export const {
+  setFavorites,
+  addToFavorites,
+  removeFromFavorites,
+  resetFavorites,
+} = favoritesSlice.actions;
 export default favoritesSlice.reducer;
 
-// import { createSlice } from "@reduxjs/toolkit";
-// import {
-//   fetchFavorites,
-//   addToFavorites,
-//   removeFromFavorites,
-// } from "./operations";
-
-// const favoritesSlice = createSlice({
-//   name: "favorites",
-//   initialState: {
-//     items: [],
-//     loading: false,
-//     error: null,
-//   },
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(fetchFavorites.pending, (state) => {
-//         state.loading = true;
-//       })
-//       .addCase(fetchFavorites.fulfilled, (state, action) => {
-//         state.loading = false;
-//         state.items = action.payload;
-//       })
-//       .addCase(fetchFavorites.rejected, (state, action) => {
-//         state.loading = false;
-//         state.error = action.payload;
-//       })
-//       .addCase(addToFavorites.fulfilled, (state, action) => {
-//         state.items.push(action.payload);
-//       })
-//       .addCase(removeFromFavorites.fulfilled, (state, action) => {
-//         state.items = state.items.filter((fav) => fav.id !== action.payload);
-//       });
-//   },
-// });
-
-// export default favoritesSlice.reducer;
+export const loadFavorites = () => async (dispatch) => {
+  const favorites = await loadFavoritesFromDatabase();
+  dispatch(setFavorites(favorites));
+};

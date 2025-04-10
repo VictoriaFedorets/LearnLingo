@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { loginUser } from "../../redux/auth/operations.js";
+import { auth } from "../../../firebase.js";
 import { selectIsLoading, selectAuthError } from "../../redux/auth/selectors";
 import css from "./LogInForm.module.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const schema = yup.object().shape({
   email: yup.string().email("Incorrect email").required("Required field"),
@@ -17,6 +18,7 @@ export default function LoginForm({ onClose }) {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectAuthError);
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -39,18 +41,29 @@ export default function LoginForm({ onClose }) {
     }
   }, [error, formData, setValue]);
 
-  const onSubmit = async (data) => {
-    try {
-      setFormData(data);
-      const resultAction = await dispatch(loginUser(data));
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-      if (loginUser.fulfilled.match(resultAction)) {
-        onClose();
-      } else {
-        toast.error("Email or password failed");
-      }
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+
+    try {
+      const response = await signInWithEmailAndPassword(auth, email, password);
+
+      onClose();
     } catch (error) {
-      toast.error("Unexpected error occurred");
+      let errorMessage = "An unknown error occurred";
+
+      if (error.code === "auth/invalid-credential") {
+        errorMessage = "Invalid email or password";
+      } else if (error.code === "auth/user-not-found") {
+        errorMessage = "No user found with this email.";
+      } else if (error.code === "auth/wrong-password") {
+        errorMessage = "Incorrect password";
+      }
+
+      toast.error(errorMessage);
     }
   };
 
@@ -74,11 +87,24 @@ export default function LoginForm({ onClose }) {
       <div className={css.inputEmail}>
         <input
           className={css.loginInput}
-          type="password"
+          type={showPassword ? "text" : "password"}
           placeholder="Password"
           autoComplete="password"
           {...register("password")}
         />
+        <svg
+          className={css.icon}
+          onClick={(e) => {
+            e.preventDefault();
+            togglePasswordVisibility();
+          }}
+        >
+          <use
+            href={`./assets/icons/symbol-defs.svg#${
+              showPassword ? "icon-eye-on" : "icon-eye-off"
+            }`}
+          />
+        </svg>
       </div>
       <p className={css.loginError}>{errors.password?.message}</p>
 

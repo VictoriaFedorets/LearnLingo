@@ -29,7 +29,7 @@ export default function ModalLesson({ teacher, onClose }) {
   });
 
   const onSubmit = (data) => {
-    console.log("Form submitted:", data);
+    // console.log("Form submitted:", data);
 
     toast.success("Your request has been sent successfully!");
 

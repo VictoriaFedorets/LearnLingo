@@ -53,6 +53,7 @@ export const loginUser = createAsyncThunk(
         email,
         password
       );
+
       const user = userCredential.user;
       return {
         uid: userCredential.user.uid,
@@ -60,8 +61,7 @@ export const loginUser = createAsyncThunk(
         name: user.displayName,
       };
     } catch (error) {
-      toast.error("Something went wrong");
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.code || "Login failed");
     }
   }
 );
@@ -112,9 +112,8 @@ export const autoRefreshToken = () => {
       if (user) {
         try {
           const token = await getIdToken(user, true);
-          console.log("Token refreshed:", token);
         } catch (error) {
-          console.error("Error refreshing token:", error.message);
+          // console.error("Error refreshing token:", error.message);
         }
       }
     }, 30 * 60 * 1000); // оновлення кожні 30 хв

@@ -6,7 +6,7 @@ import css from "./BaseModal.module.css";
 export default function BaseModal({ isLogin, onClose, children, error }) {
   useEffect(() => {
     const handleEsc = (event) => {
-      if (event.key === "Escape" && !error) {
+      if (event.key === "Escape") {
         onClose();
       }
     };

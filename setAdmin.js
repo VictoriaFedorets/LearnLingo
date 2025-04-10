@@ -2,7 +2,9 @@ import admin from "firebase-admin";
 import fs from "fs";
 
 // Завантажуємо приватний ключ
-const serviceAccount = JSON.parse(fs.readFileSync("serviceAccountKey.json"));
+const serviceAccount = JSON.parse(
+  fs.readFileSync("serviceAccountKey.json", "utf8")
+);
 
 // Ініціалізуємо Firebase Admin SDK
 admin.initializeApp({
@@ -16,8 +18,8 @@ admin
   .auth()
   .setCustomUserClaims(userId, { admin: true })
   .then(() => {
-    console.log("Admin rights granted!");
+    // Admin rights granted (успешно)
   })
   .catch((error) => {
-    console.error("Error setting admin claims:", error);
+    // Ошибка установки прав
   });
