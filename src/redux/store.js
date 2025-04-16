@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/slice.js";
 import teachersReducer from "./teachers/sliсe.js";
 import favoritesReducer from "./favorites/slice.js";
+import themeReducer from "./themes/slice.js";
 
 import {
   persistStore,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   teachers: teachersReducer,
   favorites: favoritesReducer,
+  theme: themeReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

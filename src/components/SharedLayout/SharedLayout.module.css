@@ -10,7 +10,7 @@
   }
 
   .section {
-    width: 100%;
+    min-height: calc(100vh - 68px);
     margin: 0 auto;
     box-sizing: border-box;
     padding: 16px 20px 24px 20px;

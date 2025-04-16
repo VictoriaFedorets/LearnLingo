@@ -86,14 +86,14 @@
 }
 
 .radioGroup label input:checked {
-  border-color: var(--yellow-maize);
+  border-color: var(--main-accent);
 }
 
 .radioGroup label input:checked::before {
   content: "";
   width: 12px;
   height: 12px;
-  background: var(--yellow-maize);
+  background: var(--main-accent);
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -109,14 +109,14 @@
   padding: 16px auto;
   width: 100%;
   height: 60px;
-  background: var(--yellow-maize);
+  background: var(--main-accent);
   margin-top: 40px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btnBook:hover,
 .btnBook:focus {
-  background: var(--yellow-light-hover);
+  background: var(--hover-accent);
   transform: scale(0.95);
 }
 
@@ -144,5 +144,5 @@
 
 .error,
 .errorMessage {
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }

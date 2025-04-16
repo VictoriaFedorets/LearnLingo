@@ -12,13 +12,14 @@ import { selectIsLoggedIn, selectIsLoading } from "./redux/auth/selectors.js";
 import { resetAuthState } from "./redux/auth/slice.js";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase.js";
+import { selectTheme } from "./redux/themes/selectors.js";
 
 import Loader from "./components/Loader/Loader.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import RestrictedRoute from "./components/Routes/RestrictedRoute.jsx";
-
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
+import Themes from "./components/Themes/Themes.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TeachersPage = lazy(() =>
@@ -36,6 +37,7 @@ export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -48,6 +50,11 @@ export default function App() {
 
     return () => unsubscribe();
   }, [dispatch]);
+
+  useEffect(() => {
+    document.body.classList.remove("yellow", "green", "blue", "rose", "peach");
+    document.body.classList.add(theme);
+  }, [theme]);
 
   if (isRefreshing) {
     return <Loader />;
@@ -91,6 +98,7 @@ export default function App() {
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <Themes />
         <ScrollToTop />
       </Suspense>
     </SharedLayout>

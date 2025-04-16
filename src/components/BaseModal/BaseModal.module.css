@@ -45,7 +45,7 @@
 
 .closeButton:hover .iconClose,
 .closeButton:focus .iconClose {
-  stroke: var(--yellow-maize);
+  stroke: var(--main-accent);
   transform: scale(0.95);
 }
 

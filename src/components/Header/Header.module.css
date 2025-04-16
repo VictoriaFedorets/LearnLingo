@@ -19,7 +19,7 @@
 }
 
 .headerLogo:hover {
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }
 
 .headerNav {
@@ -30,7 +30,7 @@
 }
 
 .link:hover {
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }
 
 .headerNav .active {
@@ -60,7 +60,7 @@
 .headerLogIn:hover,
 .headerLogIn:focus {
   transform: scale(0.95);
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }
 
 .headerUser {
@@ -76,7 +76,7 @@
   width: 20px;
   height: 20px;
   stroke-width: 2px;
-  stroke: var(--yellow-maize);
+  stroke: var(--main-accent);
 }
 
 .headerRegistration {
@@ -98,7 +98,7 @@
 .headerRegistration:hover,
 .headerRegistration:focus {
   transform: scale(0.95);
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }
 
 .iconLogo {

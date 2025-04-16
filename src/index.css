@@ -21,15 +21,42 @@
   --gray-modal: rgba(18, 20, 23, 0.8);
   --border-input: rgba(18, 20, 23, 0.1);
   --box-shadow-mob-menu: rgba(0, 0, 0, 0.1);
-  /* --rose-light-blush: #f2c0bd;
-  --rose-light-blush: #f2c0bd;
-  --background: rgba(0, 0, 0, 0.2); */
 
   text-align: left;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.yellow {
+  --main-accent: var(--yellow-maize);
+  --hover-accent: var(--yellow-light-hover);
+  --focus-accent: var(--yellow-light-cream);
+}
+
+.green {
+  --main-accent: var(--green-olive);
+  --hover-accent: var(--green-light-seafoam);
+  --focus-accent: #c3e6cf;
+}
+
+.blue {
+  --main-accent: var(--gray-lavender);
+  --hover-accent: var(--blue-pale-sky);
+  --focus-accent: #d1e4f5;
+}
+
+.rose {
+  --main-accent: var(--rose-dusty);
+  --hover-accent: var(--rose-light-blush);
+  --focus-accent: var(--rose-peach-puff);
+}
+
+.peach {
+  --main-accent: var(--rose-peachy);
+  --hover-accent: var(--rose-peach-puff);
+  --focus-accent: #f7d6c6;
 }
 
 body {

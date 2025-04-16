@@ -29,8 +29,8 @@ export default function ScrollToTop() {
         right: "50px",
         padding: "12px 14px",
         backgroundColor: "var(--background)",
-        color: "var(--yellow-maize)",
-        border: isHovered ? "1px solid var(--yellow-light-cream)" : "none",
+        color: "var(--main-accent)",
+        border: isHovered ? "1px solid var(--focus-accent)" : "none",
         borderRadius: "50%",
         boxShadow: isHovered
           ? "0 6px 12px rgba(0, 0, 0, 0.2)"
@@ -44,9 +44,7 @@ export default function ScrollToTop() {
     >
       <ArrowUp
         style={{
-          color: isHovered
-            ? "var(--yellow-maize)"
-            : "var(--yellow-light-hover)",
+          color: isHovered ? "var(--main-accent)" : "var(--hover-accent)",
         }}
         size={24}
       />

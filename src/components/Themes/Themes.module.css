@@ -1,0 +1,89 @@
+.container {
+  position: fixed;
+  bottom: 110px;
+  right: 50px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    border 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.themes {
+  width: 50px;
+  height: 50px;
+  background-color: var(--background);
+  color: var(--main-accent);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.themes:hover {
+  border: 1px solid var(--focus-accent);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.panel {
+  position: absolute;
+  bottom: 70px; /* відстань над кнопкою */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeInUp 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.circle:hover {
+  transform: scale(1.1);
+}
+
+.circle.yellow {
+  background-color: var(--yellow-maize);
+}
+.circle.green {
+  background-color: var(--green-olive);
+}
+.circle.blue {
+  background-color: var(--gray-lavender);
+}
+.circle.rose {
+  background-color: var(--rose-dusty);
+}
+.circle.peach {
+  background-color: var(--rose-peachy);
+}
+
+.circle.active {
+  border: 1px solid var(--focus-accent);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

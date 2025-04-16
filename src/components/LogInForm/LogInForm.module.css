@@ -40,19 +40,19 @@
   border-radius: 12px;
   padding: 16px;
   width: 100%;
-  background: var(--yellow-maize);
+  background: var(--main-accent);
   margin-top: 40px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .loginBtn:hover,
 .loginBtn:focus {
-  background: var(--yellow-light-hover);
+  background: var(--hover-accent);
   transform: scale(0.95);
 }
 
 .loginError {
-  color: var(--yellow-maize);
+  color: var(--main-accent);
   margin-bottom: 10px;
 }
 

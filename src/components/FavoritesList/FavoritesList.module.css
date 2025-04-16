@@ -12,7 +12,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 156%;
-    background: var(--yellow-maize);
+    background: var(--main-accent);
     border-radius: 12px;
     padding: 16px 48px;
     width: 183px;
@@ -24,7 +24,7 @@
 
   .teachersListBtn:hover,
   .teachersListBtn:focus {
-    background: var(--yellow-light-hover);
+    background: var(--hover-accent);
     transform: scale(0.95);
   }
 }

@@ -41,7 +41,7 @@
 
 .closeButton:hover .iconClose,
 .closeButton:focus .iconClose {
-  stroke: var(--yellow-maize);
+  stroke: var(--main-accent);
   transform: scale(0.95);
 }
 
@@ -59,7 +59,7 @@
 .headerLogIn:hover,
 .headerLogIn:focus {
   transform: scale(0.95);
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }
 
 .headerAuthorization {
@@ -78,7 +78,7 @@
   width: 20px;
   height: 20px;
   stroke-width: 2px;
-  stroke: var(--yellow-maize);
+  stroke: var(--main-accent);
 }
 
 .headerRegistration {
@@ -100,7 +100,7 @@
 .headerRegistration:hover,
 .headerRegistration:focus {
   transform: scale(0.95);
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }
 
 .iconLogo {

@@ -41,7 +41,7 @@
 
 .closeButton:hover .iconClose,
 .closeButton:focus .iconClose {
-  stroke: var(--yellow-maize);
+  stroke: var(--main-accent);
   transform: scale(0.95);
 }
 
@@ -57,7 +57,7 @@
 }
 
 .link:hover {
-  color: var(--yellow-maize);
+  color: var(--main-accent);
 }
 
 .headerNav .active {

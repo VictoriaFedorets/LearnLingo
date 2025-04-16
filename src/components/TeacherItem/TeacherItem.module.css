@@ -17,7 +17,7 @@
   .teacherAvatar {
     border-radius: 100px;
     width: 100%;
-    border: 3px solid var(--yellow-light-cream);
+    border: 3px solid var(--focus-accent);
     padding: 12px;
     position: relative;
   }
@@ -109,8 +109,8 @@
   }
 
   .favorite {
-    stroke: var(--yellow-maize);
-    fill: var(--yellow-maize);
+    stroke: var(--main-accent);
+    fill: var(--main-accent);
     transform: scale(1.2);
   }
 
@@ -158,7 +158,7 @@
 
   .btnReadMore:hover,
   .btnReadMore:focus {
-    color: var(--yellow-maize);
+    color: var(--main-accent);
   }
 
   .levelBlock {
@@ -177,16 +177,16 @@
   }
 
   .selectedLevel {
-    background: var(--yellow-maize);
+    background: var(--main-accent);
     border: none;
   }
 
   .reviewerNameLetter {
     border-radius: 50%;
-    border: 3px solid var(--yellow-maize);
+    border: 3px solid var(--main-accent);
     width: 44px;
     height: 44px;
-    background: var(--yellow-light-cream);
+    background: var(--focus-accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,7 +238,7 @@
     padding: 16px 48px;
     width: 232px;
     height: 60px;
-    background: var(--yellow-maize);
+    background: var(--main-accent);
     font-weight: 700;
     font-size: 18px;
     line-height: 156%;
@@ -249,7 +249,7 @@
   .btnBookLesson:hover,
   .btnBookLesson:focus {
     outline: none;
-    background: var(--yellow-light-hover);
+    background: var(--hover-accent);
     transform: scale(0.95);
   }
 }

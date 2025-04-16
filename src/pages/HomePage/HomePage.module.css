@@ -27,7 +27,7 @@
 .homeLanguage {
   font-family: "Roboto", sans-serif;
   font-style: italic;
-  background: var(--yellow-light-cream);
+  background: var(--focus-accent);
   border-radius: 8px;
   width: 195px;
   height: 40px;
@@ -48,7 +48,7 @@
   border-radius: 12px;
   padding: 16px 50px;
   height: 60px;
-  background: var(--yellow-maize);
+  background: var(--main-accent);
 
   font-weight: 700;
   font-size: 18px;
@@ -58,7 +58,7 @@
 
 .homeBtn:hover,
 .homeBtn:focus {
-  background: var(--yellow-light-hover);
+  background: var(--hover-accent);
   transform: scale(0.95);
 }
 
