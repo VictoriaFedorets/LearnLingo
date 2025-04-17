@@ -63,17 +63,25 @@
   transform: scale(0.95);
 }
 
+.imgWrapper {
+  display: inline-block;
+  width: 100%;
+  max-width: 568px;
+  aspect-ratio: 568 / 430;
+  animation: imgChange 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .homeImg {
   width: 100%;
+  height: auto;
   max-width: 568px;
   min-height: 280px;
   max-height: 530px;
+  object-fit: contain;
   transition: opacity 0.3s ease-in-out;
-}
-
-.imgWrapper {
-  display: inline-block;
-  animation: imgChange 0.4s ease-in-out;
 }
 
 @keyframes imgChange {
