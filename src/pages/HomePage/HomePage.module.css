@@ -41,10 +41,11 @@
   font-size: 16px;
   line-height: 137%;
   letter-spacing: -0.02em;
-  margin-bottom: 64px;
 }
 
 .homeBtn {
+  display: inline-block;
+  margin-top: 64px;
   border-radius: 12px;
   padding: 16px 50px;
   height: 60px;
@@ -67,6 +68,21 @@
   max-width: 568px;
   min-height: 280px;
   max-height: 530px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.imgWrapper {
+  display: inline-block;
+  animation: imgChange 0.4s ease-in-out;
+}
+
+@keyframes imgChange {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media screen and (min-width: 768px) {

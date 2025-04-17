@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { selectTheme } from "../../redux/themes/selectors";
 import yellow1x from "/assets/images/yellow/yellow-theme@1x.png";
 import greenImg1x from "/assets/images/green/green-theme@1x.png";
 import blueImg1x from "/assets/images/blue/blue-theme@1x.png";
@@ -6,8 +9,6 @@ import roseImg1x from "/assets/images/rose/rose-theme@1x.png";
 import peachImg1x from "/assets/images/peach/peach-theme@1x.png";
 import Statistics from "../../components/Statistics/Statistics";
 import css from "./HomePage.module.css";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../../redux/themes/selectors";
 
 export default function HomePage() {
   const themeImages = {
@@ -59,6 +60,16 @@ export default function HomePage() {
   };
 
   const currentTheme = useSelector(selectTheme);
+  const [animClass, setAnimClass] = useState(css.imgWrapper);
+
+  useEffect(() => {
+    setAnimClass("");
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setAnimClass(css.imgWrapper);
+      });
+    });
+  }, [currentTheme]);
 
   return (
     <section>
@@ -78,12 +89,15 @@ export default function HomePage() {
             Get started
           </Link>
         </article>
-        <img
-          className={css.homeImg}
-          src={themeImages[currentTheme].src}
-          srcSet={themeImages[currentTheme].srcSet}
-          alt="children"
-        />
+        <div className={animClass}>
+          <img
+            key={currentTheme} // примусово перерендерити картинку
+            className={css.homeImg}
+            src={themeImages[currentTheme].src}
+            srcSet={themeImages[currentTheme].srcSet}
+            alt="children"
+          />
+        </div>
       </div>
       <Statistics />
     </section>
